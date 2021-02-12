@@ -214,7 +214,7 @@ open class TypingDNARecorderMobile: NSObject {
      * Adds a target to the targetIds array.
      */
     @objc
-    static public func addTarget(_ targetField:UITextField) {
+    static public func addTarget(_ targetField: UITextField) {
         let target = String(targetField.hashValue);
         log(message: "[TypingDNA] Adding a target { target: %@, previous: %@ }", level: 1, targetIds.debugDescription);
         let targetLength = targetIds.count;
@@ -845,15 +845,16 @@ open class TypingDNARecorderMobile: NSObject {
         let browserType = 0; // {0:unknown, 1:Chrome, 2:Firefox, 3:Opera, 4:IE, 5: Safari, 6: Edge, 7:AndroidWK}
         let displayWidth = screenWidth; // screen width in pixels
         let displayHeight = screenHeight; // screen height in pixels
-        let orientation: Int;
-        switch UIApplication.shared.statusBarOrientation {
-            case UIInterfaceOrientation.portrait, UIInterfaceOrientation.portraitUpsideDown:
-                orientation = 1;
-            case UIInterfaceOrientation.landscapeLeft, UIInterfaceOrientation.landscapeRight:
-                orientation = 2;
-            default:
-                orientation = 1;
-        }
+        let orientation: Int = 1
+//        switch UIApplication..statusBarOrientation {
+//            case UIInterfaceOrientation.portrait, UIInterfaceOrientation.portraitUpsideDown:
+//                orientation = 1;
+//            case UIInterfaceOrientation.landscapeLeft, UIInterfaceOrientation.landscapeRight:
+//                orientation = 2;
+        
+//            default:
+//                orientation = 1;
+//        }
         let osVersion = Int(String(ProcessInfo.processInfo.operatingSystemVersion.majorVersion) + String(ProcessInfo.processInfo.operatingSystemVersion.minorVersion))!; // numbers only
         let browserVersion = 0; // numbers only
         let cookieId = 0; // only in iframe

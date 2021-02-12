@@ -39,9 +39,6 @@
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="type2Btn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RsK-M9-H3D"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ld-32-iqU">
                                 <rect key="frame" x="366" y="56" width="32" height="31"/>

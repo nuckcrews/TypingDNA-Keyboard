@@ -25,7 +25,7 @@ class MainVC: UIViewController {
         
         textField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         
-        TypingDNARecorderMobile.addTarget(textField)
+//        TypingDNARecorderMobile.addTarget(textField)
         
 //        tdna.start()
         
