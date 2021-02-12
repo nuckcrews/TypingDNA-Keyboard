@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1045778155D750150765448C /* Pods_DevWeek_Hackathon_1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD19525BF2570EE380D2BB36 /* Pods_DevWeek_Hackathon_1Tests.framework */; };
 		13B0870DA1B1CDB73196BF3D /* Pods_DevWeek_Hackathon_1_DevWeek_Hackathon_1UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E865F9941CAD24DDF26A9D7 /* Pods_DevWeek_Hackathon_1_DevWeek_Hackathon_1UITests.framework */; };
+		A013977D25D6070A00C851C7 /* TypingDNARecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A013977C25D6070A00C851C7 /* TypingDNARecorder.swift */; };
 		A0F5F86025D2D8780059562F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5F85F25D2D8780059562F /* AppDelegate.swift */; };
 		A0F5F86225D2D8780059562F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5F86125D2D8780059562F /* SceneDelegate.swift */; };
 		A0F5F86425D2D8780059562F /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5F86325D2D8780059562F /* MainVC.swift */; };
@@ -71,6 +72,7 @@
 		32E49DD82F2BC45A00930C9C /* Pods-DevWeek-Hackathon-1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevWeek-Hackathon-1.debug.xcconfig"; path = "Target Support Files/Pods-DevWeek-Hackathon-1/Pods-DevWeek-Hackathon-1.debug.xcconfig"; sourceTree = "<group>"; };
 		4425FC2956EBAA4CC747B9F7 /* Pods-DevWeek-Hackathon-1Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevWeek-Hackathon-1Tests.debug.xcconfig"; path = "Target Support Files/Pods-DevWeek-Hackathon-1Tests/Pods-DevWeek-Hackathon-1Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		730EDF4FBD3B17FFCB66DFDB /* Pods_DevWeek_Hackathon_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevWeek_Hackathon_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A013977C25D6070A00C851C7 /* TypingDNARecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingDNARecorder.swift; sourceTree = "<group>"; };
 		A0F5F85C25D2D8780059562F /* DevWeek-Hackathon-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DevWeek-Hackathon-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F5F85F25D2D8780059562F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0F5F86125D2D8780059562F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			children = (
 				A0F5F8EC25D2E9500059562F /* KeyboardViewController.swift */,
 				A0F5F96025D362220059562F /* KeyboardButton.swift */,
+				A013977C25D6070A00C851C7 /* TypingDNARecorder.swift */,
 				A0F5F96625D366CF0059562F /* KeyboardView.xib */,
 				A0F5F8EE25D2E9500059562F /* Info.plist */,
 			);
@@ -526,6 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0F5F96125D362220059562F /* KeyboardButton.swift in Sources */,
+				A013977D25D6070A00C851C7 /* TypingDNARecorder.swift in Sources */,
 				A0F5F8ED25D2E9500059562F /* KeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

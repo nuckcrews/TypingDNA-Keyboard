@@ -10,14 +10,14 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
     
     @IBOutlet var nextKeyboardButton: UIButton!
-    @IBOutlet var capsLocksButton: UIButton!
-    @IBOutlet var otherCharButton: UIButton!
-    @IBOutlet var specialCharButton: UIButton!
+    @IBOutlet weak var capsLocksButton: UIButton!
+    @IBOutlet weak var otherCharButton: UIButton!
+    @IBOutlet weak var specialCharButton: UIButton!
+    @IBOutlet weak var backSpaceBtn: UIButton!
     
-    @IBOutlet var charView1: UIView!
-    @IBOutlet var charView2: UIView!
-    @IBOutlet var charView3: UIView!
-    
+    @IBOutlet weak var charView1: UIView!
+    @IBOutlet weak var charView2: UIView!
+    @IBOutlet weak var charView3: UIView!
     
     var topRow = UIView()
     var topRow2 = UIView()
@@ -36,6 +36,9 @@ class KeyboardViewController: UIInputViewController {
     var showSet = "ABC"
     var capsLockOn = "on"
     var capsChangeEnabled = true
+    var hold_timer: Timer?
+    
+    var tdna = TypingDNARecorderMobile()
     
     
     override func viewDidLoad() {
@@ -66,6 +69,11 @@ class KeyboardViewController: UIInputViewController {
         let nib = UINib(nibName: "KeyboardView", bundle: nil)
         let objects = nib.instantiate(withOwner: self, options: nil)
         view = objects[0] as? UIView;
+        
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress(gesture:)))
+        longPressGesture.minimumPressDuration = 0.5 // Minimum duration to trigger the action
+        backSpaceBtn.addGestureRecognizer(longPressGesture)
+        
         
         layoutKeyRows()
         
@@ -240,33 +248,30 @@ class KeyboardViewController: UIInputViewController {
         animButton(button: button)
     }
     
-    @objc func keyHeld(sender: AnyObject?) {
-        
-        let button = sender as! UIButton
-        let title = button.title(for: .normal)
-        heldKey = title!
-        hold_timer?.invalidate()
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (time) in
-            self.hold_timer?.invalidate()
-            self.hold_timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.executeHeldKey), userInfo: nil, repeats: true)
-        }
-    }
-    
+
+
     
     @IBAction func backSpacePressed(button: UIButton) {
         (textDocumentProxy as UIKeyInput).deleteBackward()
         animButton(button: button)
     }
     
-    @IBAction func backSpaceHeld(button: UIButton) {
-        heldKey = ""
-        hold_timer?.invalidate()
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (time) in
-            self.hold_timer?.invalidate()
-            self.hold_timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.executeBackSpace), userInfo: nil, repeats: true)
+    @objc func longPress(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            print("Began")
+            hold_timer?.invalidate()
+            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (time) in
+                self.hold_timer?.invalidate()
+                self.hold_timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.executeBackSpace), userInfo: nil, repeats: true)
+            }
+        } else if gesture.state == .ended {
+            print("End")
+            backSpaceBtn.isHighlighted = false
+            hold_timer?.invalidate()
         }
     }
     @objc func executeBackSpace() {
+        backSpaceBtn.isHighlighted = true
         (textDocumentProxy as UIKeyInput).deleteBackward()
     }
     
@@ -275,49 +280,7 @@ class KeyboardViewController: UIInputViewController {
         checkCaps()
         animButton(button: button)
     }
-    @IBAction func spaceHeld(button: UIButton) {
-        heldKey = " "
-        hold_timer?.invalidate()
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (time) in
-            self.hold_timer?.invalidate()
-            self.hold_timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.executeHeldKey), userInfo: nil, repeats: true)
-        }
-    }
-    @IBAction func returnHeld(button: UIButton) {
-        heldKey = "\n"
-        hold_timer?.invalidate()
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (time) in
-            self.hold_timer?.invalidate()
-            self.hold_timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.executeHeldKey), userInfo: nil, repeats: true)
-        }
-    }
-    @IBAction func touchUp(_ sender: UIButton) {
-        print("Invalidate it")
-        hold_timer?.invalidate()
-    }
 
-    @objc private func longPress (longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        if longPressGestureRecognizer.state == .began {
-            print("long press began")
-            
-            hold_timer?.invalidate()
-            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (time) in
-                self.hold_timer?.invalidate()
-                self.hold_timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(self.executeHeldKey), userInfo: nil, repeats: true)
-            }
-        } else if longPressGestureRecognizer.state == .ended {
-            print("long press stopped")
-            hold_timer?.invalidate()
-        }
-    }
-    
-    var hold_timer: Timer?
-    var heldKey = ""
-    @objc func executeHeldKey() {
-        print("holding key \(heldKey)")
-        (textDocumentProxy as UIKeyInput).insertText(heldKey)
-        checkCaps()
-    }
     @IBAction func returnPressed(button: UIButton) {
         (textDocumentProxy as UIKeyInput).insertText("\n")
         checkCaps()
