@@ -2,7 +2,8 @@
 
 Keyboard extension with TypingDNA API statistics.
 
-TypingDNA
+#### TypingDNA
+
 
 ```
 https://www.typingdna.com/
