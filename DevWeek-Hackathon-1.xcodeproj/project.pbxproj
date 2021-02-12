@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1045778155D750150765448C /* Pods_DevWeek_Hackathon_1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD19525BF2570EE380D2BB36 /* Pods_DevWeek_Hackathon_1Tests.framework */; };
 		13B0870DA1B1CDB73196BF3D /* Pods_DevWeek_Hackathon_1_DevWeek_Hackathon_1UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E865F9941CAD24DDF26A9D7 /* Pods_DevWeek_Hackathon_1_DevWeek_Hackathon_1UITests.framework */; };
+		5EF8DA9080DE7239020C0BD3 /* Pods_Keyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065BB54F214F6C52166FB182 /* Pods_Keyboard.framework */; };
+		9DC34872A8FE55E4A9E5336D /* Pods_DevWeek_Hackathon_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A09261D525D71CC300414E1B /* Pods_DevWeek_Hackathon_1.framework */; };
 		A013977D25D6070A00C851C7 /* TypingDNARecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A013977C25D6070A00C851C7 /* TypingDNARecorder.swift */; };
 		A0F5F86025D2D8780059562F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5F85F25D2D8780059562F /* AppDelegate.swift */; };
 		A0F5F86225D2D8780059562F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5F86125D2D8780059562F /* SceneDelegate.swift */; };
@@ -25,6 +27,8 @@
 		A0F5F8F125D2E9500059562F /* Keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A0F5F8EA25D2E9500059562F /* Keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A0F5F96125D362220059562F /* KeyboardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5F96025D362220059562F /* KeyboardButton.swift */; };
 		A0F5F96725D366CF0059562F /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0F5F96625D366CF0059562F /* KeyboardView.xib */; };
+		BB2A39377255C455111DF0F7 /* Pods_DevWeek_Hackathon_1_DevWeek_Hackathon_1UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A09261D425D71CC300414E1B /* Pods_DevWeek_Hackathon_1_DevWeek_Hackathon_1UITests.framework */; };
+		CE49966990A5A146B5CA4361 /* Pods_DevWeek_Hackathon_1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A09261D625D71CC300414E1B /* Pods_DevWeek_Hackathon_1Tests.framework */; };
 		EE1AE076852CE64CD5232AEC /* Pods_DevWeek_Hackathon_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 730EDF4FBD3B17FFCB66DFDB /* Pods_DevWeek_Hackathon_1.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,12 +71,44 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		065BB54F214F6C52166FB182 /* Pods_Keyboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Keyboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E865F9941CAD24DDF26A9D7 /* Pods_DevWeek_Hackathon_1_DevWeek_Hackathon_1UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevWeek_Hackathon_1_DevWeek_Hackathon_1UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BAD65BB7D62FF89C3B7D21 /* Pods-DevWeek-Hackathon-1-DevWeek-Hackathon-1UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevWeek-Hackathon-1-DevWeek-Hackathon-1UITests.debug.xcconfig"; path = "Target Support Files/Pods-DevWeek-Hackathon-1-DevWeek-Hackathon-1UITests/Pods-DevWeek-Hackathon-1-DevWeek-Hackathon-1UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		32E49DD82F2BC45A00930C9C /* Pods-DevWeek-Hackathon-1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevWeek-Hackathon-1.debug.xcconfig"; path = "Target Support Files/Pods-DevWeek-Hackathon-1/Pods-DevWeek-Hackathon-1.debug.xcconfig"; sourceTree = "<group>"; };
+		3B7F87212980E59233275E04 /* Pods-Keyboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Keyboard.debug.xcconfig"; path = "Target Support Files/Pods-Keyboard/Pods-Keyboard.debug.xcconfig"; sourceTree = "<group>"; };
 		4425FC2956EBAA4CC747B9F7 /* Pods-DevWeek-Hackathon-1Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevWeek-Hackathon-1Tests.debug.xcconfig"; path = "Target Support Files/Pods-DevWeek-Hackathon-1Tests/Pods-DevWeek-Hackathon-1Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		730EDF4FBD3B17FFCB66DFDB /* Pods_DevWeek_Hackathon_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevWeek_Hackathon_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A013977C25D6070A00C851C7 /* TypingDNARecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingDNARecorder.swift; sourceTree = "<group>"; };
+		A09261BA25D71CC300414E1B /* absl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = absl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261BB25D71CC300414E1B /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261BC25D71CC300414E1B /* FirebaseABTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseABTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261BD25D71CC300414E1B /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261BE25D71CC300414E1B /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261BF25D71CC300414E1B /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCoreDiagnostics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261C025D71CC300414E1B /* FirebaseCrashlytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCrashlytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261C125D71CC300414E1B /* FirebaseDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261C225D71CC300414E1B /* FirebaseDynamicLinks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDynamicLinks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261C325D71CC300414E1B /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261C425D71CC300414E1B /* FirebaseFirestoreSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestoreSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261C525D71CC300414E1B /* FirebaseFunctions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFunctions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261C625D71CC300414E1B /* FirebaseInstallations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstallations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261C725D71CC300414E1B /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261C825D71CC300414E1B /* FirebaseMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261C925D71CC300414E1B /* FirebaseRemoteConfig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseRemoteConfig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261CA25D71CC300414E1B /* FirebaseStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261CB25D71CC300414E1B /* GoogleDataTransport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleDataTransport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261CC25D71CC300414E1B /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261CD25D71CC300414E1B /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261CE25D71CC300414E1B /* grpc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = grpc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261CF25D71CC300414E1B /* grpcpp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = grpcpp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261D025D71CC300414E1B /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261D125D71CC300414E1B /* leveldb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = leveldb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261D225D71CC300414E1B /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261D325D71CC300414E1B /* openssl_grpc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = openssl_grpc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261D425D71CC300414E1B /* Pods_DevWeek_Hackathon_1_DevWeek_Hackathon_1UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DevWeek_Hackathon_1_DevWeek_Hackathon_1UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261D525D71CC300414E1B /* Pods_DevWeek_Hackathon_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DevWeek_Hackathon_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261D625D71CC300414E1B /* Pods_DevWeek_Hackathon_1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DevWeek_Hackathon_1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09261D725D71CC300414E1B /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F5F85C25D2D8780059562F /* DevWeek-Hackathon-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DevWeek-Hackathon-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F5F85F25D2D8780059562F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0F5F86125D2D8780059562F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +131,7 @@
 		A0F5F8EE25D2E9500059562F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0F5F96025D362220059562F /* KeyboardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardButton.swift; sourceTree = "<group>"; };
 		A0F5F96625D366CF0059562F /* KeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
+		C72FB806C3D1ACEF62F485BC /* Pods-Keyboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Keyboard.release.xcconfig"; path = "Target Support Files/Pods-Keyboard/Pods-Keyboard.release.xcconfig"; sourceTree = "<group>"; };
 		D55AA8FEB5B48C14BDFB2E90 /* Pods-DevWeek-Hackathon-1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevWeek-Hackathon-1Tests.release.xcconfig"; path = "Target Support Files/Pods-DevWeek-Hackathon-1Tests/Pods-DevWeek-Hackathon-1Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F901431A94E911FFD33B3886 /* Pods-DevWeek-Hackathon-1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevWeek-Hackathon-1.release.xcconfig"; path = "Target Support Files/Pods-DevWeek-Hackathon-1/Pods-DevWeek-Hackathon-1.release.xcconfig"; sourceTree = "<group>"; };
 		FD19525BF2570EE380D2BB36 /* Pods_DevWeek_Hackathon_1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevWeek_Hackathon_1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE1AE076852CE64CD5232AEC /* Pods_DevWeek_Hackathon_1.framework in Frameworks */,
+				9DC34872A8FE55E4A9E5336D /* Pods_DevWeek_Hackathon_1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1045778155D750150765448C /* Pods_DevWeek_Hackathon_1Tests.framework in Frameworks */,
+				CE49966990A5A146B5CA4361 /* Pods_DevWeek_Hackathon_1Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B0870DA1B1CDB73196BF3D /* Pods_DevWeek_Hackathon_1_DevWeek_Hackathon_1UITests.framework in Frameworks */,
+				BB2A39377255C455111DF0F7 /* Pods_DevWeek_Hackathon_1_DevWeek_Hackathon_1UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EF8DA9080DE7239020C0BD3 /* Pods_Keyboard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,9 +180,40 @@
 		45EF4DD0F5317DEC4A079C11 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A09261BA25D71CC300414E1B /* absl.framework */,
+				A09261BB25D71CC300414E1B /* FBLPromises.framework */,
+				A09261BC25D71CC300414E1B /* FirebaseABTesting.framework */,
+				A09261BD25D71CC300414E1B /* FirebaseAuth.framework */,
+				A09261BE25D71CC300414E1B /* FirebaseCore.framework */,
+				A09261BF25D71CC300414E1B /* FirebaseCoreDiagnostics.framework */,
+				A09261C025D71CC300414E1B /* FirebaseCrashlytics.framework */,
+				A09261C125D71CC300414E1B /* FirebaseDatabase.framework */,
+				A09261C225D71CC300414E1B /* FirebaseDynamicLinks.framework */,
+				A09261C325D71CC300414E1B /* FirebaseFirestore.framework */,
+				A09261C425D71CC300414E1B /* FirebaseFirestoreSwift.framework */,
+				A09261C525D71CC300414E1B /* FirebaseFunctions.framework */,
+				A09261C625D71CC300414E1B /* FirebaseInstallations.framework */,
+				A09261C725D71CC300414E1B /* FirebaseInstanceID.framework */,
+				A09261C825D71CC300414E1B /* FirebaseMessaging.framework */,
+				A09261C925D71CC300414E1B /* FirebaseRemoteConfig.framework */,
+				A09261CA25D71CC300414E1B /* FirebaseStorage.framework */,
+				A09261CB25D71CC300414E1B /* GoogleDataTransport.framework */,
+				A09261CC25D71CC300414E1B /* GoogleToolboxForMac.framework */,
+				A09261CD25D71CC300414E1B /* GoogleUtilities.framework */,
+				A09261CE25D71CC300414E1B /* grpc.framework */,
+				A09261CF25D71CC300414E1B /* grpcpp.framework */,
+				A09261D025D71CC300414E1B /* GTMSessionFetcher.framework */,
+				A09261D125D71CC300414E1B /* leveldb.framework */,
+				A09261D225D71CC300414E1B /* nanopb.framework */,
+				A09261D325D71CC300414E1B /* openssl_grpc.framework */,
+				A09261D425D71CC300414E1B /* Pods_DevWeek_Hackathon_1_DevWeek_Hackathon_1UITests.framework */,
+				A09261D525D71CC300414E1B /* Pods_DevWeek_Hackathon_1.framework */,
+				A09261D625D71CC300414E1B /* Pods_DevWeek_Hackathon_1Tests.framework */,
+				A09261D725D71CC300414E1B /* Protobuf.framework */,
 				730EDF4FBD3B17FFCB66DFDB /* Pods_DevWeek_Hackathon_1.framework */,
 				1E865F9941CAD24DDF26A9D7 /* Pods_DevWeek_Hackathon_1_DevWeek_Hackathon_1UITests.framework */,
 				FD19525BF2570EE380D2BB36 /* Pods_DevWeek_Hackathon_1Tests.framework */,
+				065BB54F214F6C52166FB182 /* Pods_Keyboard.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -155,6 +227,8 @@
 				FF5EA2FDC01540AD36670250 /* Pods-DevWeek-Hackathon-1-DevWeek-Hackathon-1UITests.release.xcconfig */,
 				4425FC2956EBAA4CC747B9F7 /* Pods-DevWeek-Hackathon-1Tests.debug.xcconfig */,
 				D55AA8FEB5B48C14BDFB2E90 /* Pods-DevWeek-Hackathon-1Tests.release.xcconfig */,
+				3B7F87212980E59233275E04 /* Pods-Keyboard.debug.xcconfig */,
+				C72FB806C3D1ACEF62F485BC /* Pods-Keyboard.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -297,6 +371,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0F5F8F225D2E9500059562F /* Build configuration list for PBXNativeTarget "Keyboard" */;
 			buildPhases = (
+				A4FA35E970098C1DD6C53F71 /* [CP] Check Pods Manifest.lock */,
 				A0F5F8E625D2E9500059562F /* Sources */,
 				A0F5F8E725D2E9500059562F /* Frameworks */,
 				A0F5F8E825D2E9500059562F /* Resources */,
@@ -426,6 +501,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-DevWeek-Hackathon-1-DevWeek-Hackathon-1UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4FA35E970098C1DD6C53F71 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Keyboard-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -824,6 +921,7 @@
 		};
 		A0F5F8F325D2E9500059562F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B7F87212980E59233275E04 /* Pods-Keyboard.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99P8V3CP7F;
@@ -843,6 +941,7 @@
 		};
 		A0F5F8F425D2E9500059562F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C72FB806C3D1ACEF62F485BC /* Pods-Keyboard.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99P8V3CP7F;

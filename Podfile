@@ -22,6 +22,24 @@ target 'DevWeek-Hackathon-1' do
 
 #  pod 'TypingDNARecorderMobile'
 
+  target 'Keyboard' do
+    inherit! :search_paths
+    
+    # Pods for testing
+    pod 'Firebase'
+    pod 'Firebase/Database'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Storage'
+    pod 'Firebase/Performance'
+    pod 'Firebase/Crashlytics'
+    pod 'Firebase/Analytics'
+    pod 'Firebase/Messaging'
+    pod 'Firebase/Firestore'
+    pod 'FirebaseFirestoreSwift'
+    pod 'Firebase/Functions'
+    
+  end
+
   target 'DevWeek-Hackathon-1Tests' do
     inherit! :search_paths
     # Pods for testing

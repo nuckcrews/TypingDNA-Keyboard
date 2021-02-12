@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class KeyboardViewController: UIInputViewController {
     
@@ -39,9 +40,7 @@ class KeyboardViewController: UIInputViewController {
     var hold_timer: Timer?
     
     var tdna = TypingDNARecorderMobile()
-    
     var textField = UITextField()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -235,20 +234,7 @@ class KeyboardViewController: UIInputViewController {
             button.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
     }
-    
-    func checkCaps() {
-        if capsLockOn == "on" {
-            capsLockOn = "off"
-            
-            changeCaps(containerView: topRow)
-            changeCaps(containerView: topRow2)
-            changeCaps(containerView: topRow3)
-            
-            capsLocksButton.backgroundColor = UIColor(red: 0.74, green: 0.76, blue: 0.78, alpha: 1.00)
-            capsLocksButton.setImage(UIImage(systemName: "arrow.up"), for: .normal)
-        }
-    }
-    
+
     @objc func keyPressed(sender: AnyObject?) {
         let button = sender as! UIButton
         let title = button.title(for: .normal)
@@ -258,14 +244,10 @@ class KeyboardViewController: UIInputViewController {
         animButton(button: button)
     }
     
-    
-
-    
     @IBAction func backSpacePressed(button: UIButton) {
         (textDocumentProxy as UIKeyInput).deleteBackward()
         animButton(button: button)
     }
-    
     @objc func longPress(gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             print("Began")
@@ -285,14 +267,12 @@ class KeyboardViewController: UIInputViewController {
         (textDocumentProxy as UIKeyInput).deleteBackward()
         textField.deleteBackward()
     }
-    
     @IBAction func spacePressed(button: UIButton) {
         (textDocumentProxy as UIKeyInput).insertText(" ")
         textField.insertText(" ")
         checkCaps()
         animButton(button: button)
     }
-
     @IBAction func returnPressed(button: UIButton) {
         (textDocumentProxy as UIKeyInput).insertText("\n")
         textField.insertText("\n")
@@ -379,6 +359,18 @@ class KeyboardViewController: UIInputViewController {
         
     }
     
+    func checkCaps() {
+        if capsLockOn == "on" {
+            capsLockOn = "off"
+            
+            changeCaps(containerView: topRow)
+            changeCaps(containerView: topRow2)
+            changeCaps(containerView: topRow3)
+            
+            capsLocksButton.backgroundColor = UIColor(red: 0.74, green: 0.76, blue: 0.78, alpha: 1.00)
+            capsLocksButton.setImage(UIImage(systemName: "arrow.up"), for: .normal)
+        }
+    }
     @objc func enableCaps() {
         capsChangeEnabled = true
     }
