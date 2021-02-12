@@ -40,6 +40,8 @@ class KeyboardViewController: UIInputViewController {
     
     var tdna = TypingDNARecorderMobile()
     
+    var textField = UITextField()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +57,9 @@ class KeyboardViewController: UIInputViewController {
         self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
 
+        
+        TypingDNARecorderMobile.addTarget(textField)
+//        TypingDNARecorderMobile.addTarget(textDocumentProxy)
     }
     override func viewWillLayoutSubviews() {
         self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
@@ -62,6 +67,8 @@ class KeyboardViewController: UIInputViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        textField.becomeFirstResponder()
         
         view.subviews.forEach({ $0.removeFromSuperview() })
         
@@ -248,7 +255,11 @@ class KeyboardViewController: UIInputViewController {
         animButton(button: button)
     }
     
-
+    // Get type 2 pattern. Recommended on mobile, for non-sensitive fixed texts.
+    @IBAction func type2Btn(_ sender: UIButton) {
+        let typingPattern = TypingDNARecorderMobile.getTypingPattern(2, 0, "", 0, textField)
+        print("Type 2: ", typingPattern)
+    }
 
     
     @IBAction func backSpacePressed(button: UIButton) {

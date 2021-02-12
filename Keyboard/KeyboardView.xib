@@ -117,6 +117,7 @@
                     </state>
                     <connections>
                         <action selector="returnPressedWithButton:" destination="-1" eventType="touchUpInside" id="2la-gE-eUd"/>
+                        <action selector="type2Btn:" destination="-1" eventType="touchUpInside" id="G3A-1A-iEa"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3w-R1-n3q" customClass="KeyboardButton" customModule="Keyboard" customModuleProvider="target">
