@@ -48,6 +48,8 @@ class KeyboardViewController: UIInputViewController {
         
         // Perform custom UI setup here
         
+        textField.delegate = self
+        
         self.nextKeyboardButton = UIButton(type: .system)
         self.nextKeyboardButton.setTitle(NSLocalizedString("TypingDNA", comment: "Title for 'Next Keyboard' button"), for: [])
         self.nextKeyboardButton.sizeToFit()
@@ -251,15 +253,12 @@ class KeyboardViewController: UIInputViewController {
         let button = sender as! UIButton
         let title = button.title(for: .normal)
         (textDocumentProxy as UIKeyInput).insertText(title!)
+        textField.insertText(title!)
         checkCaps()
         animButton(button: button)
     }
     
-    // Get type 2 pattern. Recommended on mobile, for non-sensitive fixed texts.
-    @IBAction func type2Btn(_ sender: UIButton) {
-        let typingPattern = TypingDNARecorderMobile.getTypingPattern(2, 0, "", 0, textField)
-        print("Type 2: ", typingPattern)
-    }
+    
 
     
     @IBAction func backSpacePressed(button: UIButton) {
@@ -284,19 +283,23 @@ class KeyboardViewController: UIInputViewController {
     @objc func executeBackSpace() {
         backSpaceBtn.isHighlighted = true
         (textDocumentProxy as UIKeyInput).deleteBackward()
+        textField.deleteBackward()
     }
     
     @IBAction func spacePressed(button: UIButton) {
         (textDocumentProxy as UIKeyInput).insertText(" ")
+        textField.insertText(" ")
         checkCaps()
         animButton(button: button)
     }
 
     @IBAction func returnPressed(button: UIButton) {
         (textDocumentProxy as UIKeyInput).insertText("\n")
+        textField.insertText("\n")
         checkCaps()
         animButton(button: button)
     }
+    
     @IBAction func tap123(button: UIButton) {
         if showSet == "ABC" {
             showSet = "123"
@@ -437,5 +440,39 @@ class KeyboardViewController: UIInputViewController {
             containingView.addConstraints([topConstraint, bottomConstraint, rightConstraint, leftConstraint])
         }
     }
+    
+}
+extension KeyboardViewController {
+    
+    // Get type 1 pattern. Recommended on mobile, for sensitive fixed texts (passwords/pins).
+    @IBAction func type1Btn(_ sender: UIButton) {
+        //let str = textField.text!; let typingPattern = TypingDNARecorderMobile.getTypingPattern(1, 0, str, 0);
+        let typingPattern = TypingDNARecorderMobile.getTypingPattern(1, 0, "", 0, textField)
+        print("Type 1: ", typingPattern)
+    }
+    
+    // Get type 2 pattern. Recommended on mobile, for non-sensitive fixed texts.
+    @IBAction func type2Btn(_ sender: UIButton) {
+        print("textfield text: \(textField.text ?? "No text")")
+        let typingPattern = TypingDNARecorderMobile.getTypingPattern(2, 0, "", 0, textField)
+        print("Type 2: ", typingPattern)
+        textField.text = ""
+        TypingDNARecorderMobile.reset(true)
+    }
+    
+    // Get type 0 pattern (anytext pattern). NOT recommended on mobile version because it needs 120+ chars to work well.
+    @IBAction func type0Btn(_ sender: UIButton) {
+        let typingPattern = TypingDNARecorderMobile.getTypingPattern(0, 0, "", 0)
+        print("Type 0: ",typingPattern)
+    }
+    
+    @IBAction func resetBtn(_ sender: UIButton) {
+        textField.text = ""
+//        textCountLbl.text = "0"
+        TypingDNARecorderMobile.reset(true)
+    }
+}
+
+extension KeyboardViewController: UITextFieldDelegate {
     
 }

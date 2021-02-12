@@ -31,7 +31,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xls-9n-RV2">
                                 <rect key="frame" x="44" y="215" width="326" height="38"/>
-                                <color key="backgroundColor" red="0.58397318147296173" green="0.68128275460687604" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.66274509803921566" green="0.792156862745098" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="VQA-Vw-eGz"/>
                                 </constraints>
