@@ -12,6 +12,10 @@
 		5EF8DA9080DE7239020C0BD3 /* Pods_Keyboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065BB54F214F6C52166FB182 /* Pods_Keyboard.framework */; };
 		9DC34872A8FE55E4A9E5336D /* Pods_DevWeek_Hackathon_1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A09261D525D71CC300414E1B /* Pods_DevWeek_Hackathon_1.framework */; };
 		A013977D25D6070A00C851C7 /* TypingDNARecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A013977C25D6070A00C851C7 /* TypingDNARecorder.swift */; };
+		A07BDBBA25DC1F1500BDD2C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A07BDBB925DC1F1500BDD2C7 /* GoogleService-Info.plist */; };
+		A092629925D7263A00414E1B /* LandingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092629825D7263A00414E1B /* LandingVC.swift */; };
+		A092629F25D736CA00414E1B /* Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092629E25D736CA00414E1B /* Queries.swift */; };
+		A09262A925D7409100414E1B /* Queries.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09262A825D7409100414E1B /* Queries.swift */; };
 		A0F5F86025D2D8780059562F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5F85F25D2D8780059562F /* AppDelegate.swift */; };
 		A0F5F86225D2D8780059562F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5F86125D2D8780059562F /* SceneDelegate.swift */; };
 		A0F5F86425D2D8780059562F /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F5F86325D2D8780059562F /* MainVC.swift */; };
@@ -79,6 +83,9 @@
 		4425FC2956EBAA4CC747B9F7 /* Pods-DevWeek-Hackathon-1Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DevWeek-Hackathon-1Tests.debug.xcconfig"; path = "Target Support Files/Pods-DevWeek-Hackathon-1Tests/Pods-DevWeek-Hackathon-1Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		730EDF4FBD3B17FFCB66DFDB /* Pods_DevWeek_Hackathon_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DevWeek_Hackathon_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A013977C25D6070A00C851C7 /* TypingDNARecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingDNARecorder.swift; sourceTree = "<group>"; };
+		A07BDBB925DC1F1500BDD2C7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A0845F6025DB52C80067D699 /* DevWeek-Hackathon-1.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DevWeek-Hackathon-1.entitlements"; sourceTree = "<group>"; };
+		A0845F6925DB580C0067D699 /* Keyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Keyboard.entitlements; sourceTree = "<group>"; };
 		A09261BA25D71CC300414E1B /* absl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = absl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09261BB25D71CC300414E1B /* FBLPromises.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBLPromises.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09261BC25D71CC300414E1B /* FirebaseABTesting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseABTesting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,6 +116,9 @@
 		A09261D525D71CC300414E1B /* Pods_DevWeek_Hackathon_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DevWeek_Hackathon_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09261D625D71CC300414E1B /* Pods_DevWeek_Hackathon_1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DevWeek_Hackathon_1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A09261D725D71CC300414E1B /* Protobuf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Protobuf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A092629825D7263A00414E1B /* LandingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingVC.swift; sourceTree = "<group>"; };
+		A092629E25D736CA00414E1B /* Queries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queries.swift; sourceTree = "<group>"; };
+		A09262A825D7409100414E1B /* Queries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queries.swift; sourceTree = "<group>"; };
 		A0F5F85C25D2D8780059562F /* DevWeek-Hackathon-1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DevWeek-Hackathon-1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F5F85F25D2D8780059562F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0F5F86125D2D8780059562F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -260,11 +270,14 @@
 		A0F5F85E25D2D8780059562F /* DevWeek-Hackathon-1 */ = {
 			isa = PBXGroup;
 			children = (
+				A0845F6025DB52C80067D699 /* DevWeek-Hackathon-1.entitlements */,
 				A0F5F85F25D2D8780059562F /* AppDelegate.swift */,
 				A0F5F86125D2D8780059562F /* SceneDelegate.swift */,
 				A0F5F86325D2D8780059562F /* MainVC.swift */,
+				A092629825D7263A00414E1B /* LandingVC.swift */,
 				A0F5F8E125D2E32E0059562F /* CustomViews.swift */,
 				A0F5F8DC25D2DF030059562F /* TypingDNARecorder.swift */,
+				A09262A825D7409100414E1B /* Queries.swift */,
 				A0F5F86525D2D8780059562F /* Main.storyboard */,
 				A0F5F86825D2D87A0059562F /* Assets.xcassets */,
 				A0F5F86A25D2D87A0059562F /* LaunchScreen.storyboard */,
@@ -295,10 +308,13 @@
 		A0F5F8EB25D2E9500059562F /* Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				A0845F6925DB580C0067D699 /* Keyboard.entitlements */,
 				A0F5F8EC25D2E9500059562F /* KeyboardViewController.swift */,
 				A0F5F96025D362220059562F /* KeyboardButton.swift */,
 				A013977C25D6070A00C851C7 /* TypingDNARecorder.swift */,
+				A092629E25D736CA00414E1B /* Queries.swift */,
 				A0F5F96625D366CF0059562F /* KeyboardView.xib */,
+				A07BDBB925DC1F1500BDD2C7 /* GoogleService-Info.plist */,
 				A0F5F8EE25D2E9500059562F /* Info.plist */,
 			);
 			path = Keyboard;
@@ -462,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0F5F96725D366CF0059562F /* KeyboardView.xib in Resources */,
+				A07BDBBA25DC1F1500BDD2C7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,8 +616,10 @@
 			files = (
 				A0F5F86425D2D8780059562F /* MainVC.swift in Sources */,
 				A0F5F86025D2D8780059562F /* AppDelegate.swift in Sources */,
+				A09262A925D7409100414E1B /* Queries.swift in Sources */,
 				A0F5F8E225D2E32E0059562F /* CustomViews.swift in Sources */,
 				A0F5F8DD25D2DF030059562F /* TypingDNARecorder.swift in Sources */,
+				A092629925D7263A00414E1B /* LandingVC.swift in Sources */,
 				A0F5F86225D2D8780059562F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -627,6 +646,7 @@
 			files = (
 				A0F5F96125D362220059562F /* KeyboardButton.swift in Sources */,
 				A013977D25D6070A00C851C7 /* TypingDNARecorder.swift in Sources */,
+				A092629F25D736CA00414E1B /* Queries.swift in Sources */,
 				A0F5F8ED25D2E9500059562F /* KeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -794,7 +814,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "DevWeek-Hackathon-1/DevWeek-Hackathon-1.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 99P8V3CP7F;
 				INFOPLIST_FILE = "DevWeek-Hackathon-1/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -816,7 +838,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "DevWeek-Hackathon-1/DevWeek-Hackathon-1.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 99P8V3CP7F;
 				INFOPLIST_FILE = "DevWeek-Hackathon-1/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -923,7 +947,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B7F87212980E59233275E04 /* Pods-Keyboard.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Keyboard/Keyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 99P8V3CP7F;
 				INFOPLIST_FILE = Keyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -943,7 +969,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C72FB806C3D1ACEF62F485BC /* Pods-Keyboard.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Keyboard/Keyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 99P8V3CP7F;
 				INFOPLIST_FILE = Keyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

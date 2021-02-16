@@ -18,9 +18,9 @@ class CircleImg: UIImageView {
     
     
     override func awakeFromNib() {
-          super.awakeFromNib()
-          self.layer.cornerRadius = self.frame.width / 2
-          self.clipsToBounds = true
+        super.awakeFromNib()
+        self.layer.cornerRadius = self.frame.width / 2
+        self.clipsToBounds = true
         self.contentMode = .scaleAspectFill
     }
 }
@@ -29,9 +29,9 @@ class CircleView: UIView {
     var gradientLayer : CAGradientLayer!
     
     override func awakeFromNib() {
-          super.awakeFromNib()
-          self.layer.cornerRadius = self.frame.width / 2
-          self.clipsToBounds = true
+        super.awakeFromNib()
+        self.layer.cornerRadius = self.frame.width / 2
+        self.clipsToBounds = true
         self.contentMode = .scaleAspectFill
     }
 }
@@ -41,19 +41,19 @@ class CircleButton: UIButton {
     
     
     override func awakeFromNib() {
-          super.awakeFromNib()
-          self.layer.cornerRadius = self.frame.width / 2
-          self.clipsToBounds = true
+        super.awakeFromNib()
+        self.layer.cornerRadius = self.frame.width / 2
+        self.clipsToBounds = true
         self.contentMode = .scaleAspectFill
     }
 }
 class roundImg: UIImageView {
-
+    
     override func awakeFromNib() {
-          super.awakeFromNib()
+        super.awakeFromNib()
         self.layer.cornerRadius = 10
-
-          self.clipsToBounds = true
+        
+        self.clipsToBounds = true
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 8).cgPath
         self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
@@ -61,18 +61,18 @@ class roundImg: UIImageView {
         self.layer.shadowRadius = 3
         self.contentMode = .scaleAspectFill
     }
-
+    
 }
 
 
 
 class roundView: UIView {
     
-
+    
     override func awakeFromNib() {
-          super.awakeFromNib()
+        super.awakeFromNib()
         self.layer.cornerRadius = 3
-          self.clipsToBounds = true
+        self.clipsToBounds = true
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 8).cgPath
         self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
@@ -80,26 +80,26 @@ class roundView: UIView {
         self.layer.shadowRadius = 3
         self.contentMode = .scaleAspectFill
     }
-
+    
 }
 
 class CircleLabel: UILabel{
-
+    
     override func awakeFromNib() {
-          super.awakeFromNib()
-          self.layer.cornerRadius = self.frame.width / 2
-          self.clipsToBounds = true
-         
-      }
+        super.awakeFromNib()
+        self.layer.cornerRadius = self.frame.width / 2
+        self.clipsToBounds = true
+        
+    }
 }
 class cornerLabel: UILabel{
-
+    
     override func awakeFromNib() {
-          super.awakeFromNib()
-          self.layer.cornerRadius = 10
-          self.clipsToBounds = true
-         
-      }
+        super.awakeFromNib()
+        self.layer.cornerRadius = 10
+        self.clipsToBounds = true
+        
+    }
 }
 class CustomScrollView: UIScrollView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -119,7 +119,7 @@ final class ContentSizedTableView: UITableView {
             invalidateIntrinsicContentSize()
         }
     }
-
+    
     override var intrinsicContentSize: CGSize {
         layoutIfNeeded()
         return CGSize(width: UIView.noIntrinsicMetric, height: contentSize.height)
@@ -133,19 +133,19 @@ extension UIImage {
     var breadthSize: CGSize  { .init(width: breadth, height: breadth) }
     var breadthRect: CGRect  { .init(origin: .zero, size: breadthSize) }
     func rounded(with color: UIColor, width: CGFloat) -> UIImage? {
-
+        
         guard let cgImage = cgImage?.cropping(to: .init(origin: .init(x: isLandscape ? ((size.width-size.height)/2).rounded(.down) : .zero, y: isPortrait ? ((size.height-size.width)/2).rounded(.down) : .zero), size: breadthSize)) else { return nil }
-
+        
         let bleed = breadthRect.insetBy(dx: -width, dy: -width)
         let format = imageRendererFormat
         format.opaque = false
-
+        
         return UIGraphicsImageRenderer(size: bleed.size, format: format).image { context in
             UIBezierPath(ovalIn: .init(origin: .zero, size: bleed.size)).addClip()
             var strokeRect =  breadthRect.insetBy(dx: -width/2, dy: -width/2)
             strokeRect.origin = .init(x: width/2, y: width/2)
             UIImage(cgImage: cgImage, scale: 1, orientation: imageOrientation)
-            .draw(in: strokeRect.insetBy(dx: width/2, dy: width/2))
+                .draw(in: strokeRect.insetBy(dx: width/2, dy: width/2))
             context.cgContext.setStrokeColor(color.cgColor)
             let line: UIBezierPath = .init(ovalIn: strokeRect)
             line.lineWidth = width
@@ -164,9 +164,9 @@ extension UIView {
         drawingRect.origin.x = (self.bounds.size.width - radius) / 2
         drawingRect.size.height = radius
         drawingRect.origin.y = (self.bounds.size.height - radius) / 2
-
+        
         radius /= 2
-
+        
         var path = UIBezierPath(roundedRect: drawingRect.insetBy(dx: strokeWidth/2, dy: strokeWidth/2), cornerRadius: radius)
         let border = CAShapeLayer()
         border.fillColor = UIColor.clear.cgColor
@@ -174,7 +174,7 @@ extension UIView {
         border.strokeColor = borderColor.cgColor
         border.lineWidth = strokeWidth
         self.layer.addSublayer(border)
-
+        
         path = UIBezierPath(roundedRect: drawingRect, cornerRadius: radius)
         let mask = CAShapeLayer()
         mask.path = path.cgPath
@@ -190,10 +190,10 @@ extension UIImageView {
         containerView.layer.shadowRadius = 2
         containerView.layer.cornerRadius = cornerRadious
         containerView.layer.shadowPath = UIBezierPath(roundedRect: containerView.bounds, cornerRadius: cornerRadious).cgPath
-
+        
         self.layer.cornerRadius = cornerRadious
         self.clipsToBounds = true
-       
+        
     }
 }
 
@@ -205,7 +205,7 @@ class ShadowBoxAny: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-    
+        
         if fillColor == nil {
             fillColor = self.backgroundColor!
             self.backgroundColor = .clear
@@ -218,8 +218,8 @@ class ShadowBoxAny: UIView {
             shadowLayer.shadowColor = UIColor.black.cgColor
             shadowLayer.shadowPath = shadowLayer.path
             shadowLayer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-            shadowLayer.shadowOpacity = 0.3
-            shadowLayer.shadowRadius = 4
+            shadowLayer.shadowOpacity = 0.1
+            shadowLayer.shadowRadius = 10
             layer.insertSublayer(shadowLayer, at: 0)
         } else {
             shadowLayer.removeFromSuperlayer()
@@ -230,85 +230,25 @@ class ShadowBoxAny: UIView {
             shadowLayer.shadowColor = UIColor.black.cgColor
             shadowLayer.shadowPath = shadowLayer.path
             shadowLayer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-            shadowLayer.shadowOpacity = 0.3
-            shadowLayer.shadowRadius = 4
+            shadowLayer.shadowOpacity = 0.1
+            shadowLayer.shadowRadius = 10
             layer.insertSublayer(shadowLayer, at: 0)
         }
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-
+        
         guard UIApplication.shared.applicationState == .inactive else {
             return
         }
-      
+        
         //self.backgroundColor = fillColor
         self.layoutSubviews()
         
     }
     
 }
-
-class ShadowBoxAnySocial: UIView {
-    
-    private var shadowLayer: CAShapeLayer!
-    private var cornerRadius: CGFloat = 10.0
-    private var fillColor: UIColor?
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        if fillColor == nil {
-            fillColor = self.backgroundColor!
-            self.backgroundColor = .clear
-        }
-        
-        
-        if shadowLayer == nil {
-            shadowLayer = CAShapeLayer()
-            
-            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
-            shadowLayer.fillColor = fillColor!.cgColor
-            
-            shadowLayer.shadowColor = UIColor.black.cgColor
-            shadowLayer.shadowPath = shadowLayer.path
-            shadowLayer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-            shadowLayer.shadowOpacity = 0.3
-            shadowLayer.shadowRadius = 4
-            
-            layer.insertSublayer(shadowLayer, at: 0)
-        } else {
-            shadowLayer.removeFromSuperlayer()
-            shadowLayer = nil
-            shadowLayer = CAShapeLayer()
-            
-            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
-            shadowLayer.fillColor = fillColor!.cgColor
-            
-            shadowLayer.shadowColor = UIColor.black.cgColor
-            shadowLayer.shadowPath = shadowLayer.path
-            shadowLayer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-            shadowLayer.shadowOpacity = 0.3
-            shadowLayer.shadowRadius = 4
-            
-            layer.insertSublayer(shadowLayer, at: 0)
-        }
-    }
-    
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        guard UIApplication.shared.applicationState == .inactive else {
-            return
-        }
-      
-        self.layoutSubviews()
-    }
-    
-}
-
-
 
 class ShadowBoxAnyFlat: UIView {
     
@@ -358,12 +298,12 @@ class ShadowBoxAnyFlat: UIView {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-
+        
         guard UIApplication.shared.applicationState == .inactive else {
             return
         }
-      
-
+        
+        
         self.layoutSubviews()
     }
     
@@ -379,7 +319,7 @@ class ShadowButtonAny: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-    
+        
         
         if fillColor == nil || self.backgroundColor != .clear {
             fillColor = self.backgroundColor!
@@ -420,13 +360,13 @@ class ShadowButtonAny: UIButton {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-
+        
         guard UIApplication.shared.applicationState == .inactive else {
             return
         }
-    
+        
         self.layoutSubviews()
-
+        
     }
     
 }
@@ -498,14 +438,14 @@ extension UIView {
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
         animation.duration = 1.5
         animation.values = [0.0, -80.0, 0.0, -60.0, 0.0, -40.0, 0.0, -20.0, 0.0, -10.0, 0.0]
-
+        
         layer.add(animation, forKey: "grow")
     }
 }
 
 
 extension UIImage{
-
+    
     class func getColoredRectImageWith(color: CGColor, andSize size: CGSize) -> UIImage{
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
         let graphicsContext = UIGraphicsGetCurrentContext()
@@ -518,7 +458,7 @@ extension UIImage{
     }
 }
 class FadeHead: UIView {
-
+    
     private lazy var gradientLayer: CAGradientLayer = {
         let l = CAGradientLayer()
         l.startPoint = CGPoint(x: 0.5, y: 0)
@@ -531,11 +471,11 @@ class FadeHead: UIView {
         layer.addSublayer(l)
         return l
     }()
-
+    
     
     func newGrad() {
         layer.sublayers?.removeAll()
-    
+        
         let l = CAGradientLayer()
         l.startPoint = CGPoint(x: 0.5, y: 0)
         l.endPoint = CGPoint(x: 0.5, y: 1)
@@ -554,20 +494,20 @@ class FadeHead: UIView {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-
+        
         guard UIApplication.shared.applicationState == .inactive else {
             return
         }
-      
-       
+        
+        
         self.layoutSubviews()
-    
+        
     }
     
 }
 
 class FadeTail: UIView {
-
+    
     private lazy var gradientLayer: CAGradientLayer = {
         let l = CAGradientLayer()
         l.startPoint = CGPoint(x: 0.5, y: 0)
@@ -579,9 +519,9 @@ class FadeTail: UIView {
         ].map{$0.cgColor}
         return l
     }()
-
+    
     func newGrad() {
-         layer.sublayers?.removeAll()
+        layer.sublayers?.removeAll()
         let l = CAGradientLayer()
         l.startPoint = CGPoint(x: 0.5, y: 0)
         l.endPoint = CGPoint(x: 0.5, y: 1)
@@ -596,7 +536,7 @@ class FadeTail: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
- 
+        
         
         newGrad()
     }
@@ -607,14 +547,14 @@ class FadeTail: UIView {
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-
+        
         guard UIApplication.shared.applicationState == .inactive else {
             return
         }
-      
+        
         //self.backgroundColor = fillColor
         print("changed up")
-    
+        
         self.layoutSubviews()
         
         
@@ -622,7 +562,7 @@ class FadeTail: UIView {
 }
 
 class gradView: UIView {
-
+    
     
     private var shadowLayer: CAShapeLayer!
     private var cornerRadius: CGFloat = 10.0
@@ -630,7 +570,7 @@ class gradView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
+        
         self.backgroundColor = .clear
         if shadowLayer == nil {
             shadowLayer = CAShapeLayer()
@@ -644,7 +584,7 @@ class gradView: UIView {
             shadowLayer.shadowOpacity = 0.3
             shadowLayer.shadowRadius = 4
             
-
+            
             
             layer.insertSublayer(shadowLayer, at: 0)
             
@@ -752,7 +692,7 @@ class RoundFlatButton: UIButton {
 
 
 extension UIView {
-   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
         mask.path = path.cgPath
@@ -762,20 +702,20 @@ extension UIView {
 
 
 extension UIScrollView {
-
+    
     var isAtTop: Bool {
         return contentOffset.y <= verticalOffsetForTop
     }
-
+    
     var isAtBottom: Bool {
         return contentOffset.y >= verticalOffsetForBottom
     }
-
+    
     var verticalOffsetForTop: CGFloat {
         let topInset = contentInset.top
         return -topInset
     }
-
+    
     var verticalOffsetForBottom: CGFloat {
         let scrollViewHeight = bounds.height
         let scrollContentSizeHeight = contentSize.height
@@ -783,6 +723,6 @@ extension UIScrollView {
         let scrollViewBottomOffset = scrollContentSizeHeight + bottomInset - scrollViewHeight
         return scrollViewBottomOffset
     }
-
+    
 }
 

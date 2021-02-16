@@ -34,6 +34,7 @@ class KeyboardViewController: UIInputViewController {
     var charSet2 = [["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"], ["-", "/", ":", ";", "(", ")", "$", "&", "@", "\""], [".", ",", "?", "!", "'"]]
     var charSet3 = [["[", "]", "{", "}", "#", "%", "^", "*", "+", "="], ["_", "\\", "|", "~", "<", ">", "€", "£", "¥", "•"], [".", ",", "?", "!", "'"]]
     
+    var query: Query!
     var showSet = "ABC"
     var capsLockOn = "on"
     var capsChangeEnabled = true
@@ -46,6 +47,9 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
         
         // Perform custom UI setup here
+        FirebaseApp.configure()
+         
+        query = Query()
         
         textField.delegate = self
         
@@ -68,6 +72,21 @@ class KeyboardViewController: UIInputViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        manage_user()
+        
+        print("trying to get user data")
+//        query.get_user_data(id: "HycWFCyoIjVdE1uTX8aB") { (res, err) in
+//            print("Got the data")
+//            print(err)
+//            print(res)
+//        }
+        
+        query.get_user(id: "HycWFCyoIjVdE1uTX8aB") { (res, err) in
+            print("Got the data")
+            print(err)
+            print(res)
+        }
         
         textField.becomeFirstResponder()
         
@@ -97,10 +116,44 @@ class KeyboardViewController: UIInputViewController {
         }
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+    }
     override func updateViewConstraints() {
         super.updateViewConstraints()
         // Add custom view sizing constraints here
         
+    }
+    
+    func manage_user() {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            create_user()
+            print("no user")
+            return
+        }
+        let data: [String: Any] = [
+            "last_use": Standard_Date(dt: Date()).string as Any,
+            "in_use": true as Any
+        ]
+        query.write_user_data(id: uid, data: data) { (res, err) in
+            err != nil ? print(err ?? "error posting data") : print(res ?? "success")
+        }
+    }
+    func create_user() {
+        Auth.auth().signInAnonymously() { (authResult, error) in
+            guard let user = authResult?.user else {
+                print("could not sign in user")
+                return
+            }
+            let uid = user.uid
+            let data: [String: Any] = [
+                "last_use": Standard_Date(dt: Date()).string as Any,
+                "in_use": true as Any
+            ]
+            self.query.write_user_data(id: uid, data: data) { (res, err) in
+                err != nil ? print(err ?? "error posting data") : print(res ?? "success")
+            }
+        }
     }
     
     func layoutKeyRows() {
@@ -466,5 +519,25 @@ extension KeyboardViewController {
 }
 
 extension KeyboardViewController: UITextFieldDelegate {
+    
+}
+
+
+
+class Standard_Date: DateFormatter {
+    
+    public var date: Date?
+    public var string: String?
+    
+    init(dt: Date) {
+        super.init()
+        date = dt
+        self.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        string = self.string(from: dt)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
 }
