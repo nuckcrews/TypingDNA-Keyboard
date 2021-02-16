@@ -46,6 +46,8 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Device ID Keyboard:", UIDevice.current.identifierForVendor!.uuidString)
+        
         // Perform custom UI setup here
         FirebaseApp.configure()
          
@@ -76,13 +78,8 @@ class KeyboardViewController: UIInputViewController {
         manage_user()
         
         print("trying to get user data")
-//        query.get_user_data(id: "HycWFCyoIjVdE1uTX8aB") { (res, err) in
-//            print("Got the data")
-//            print(err)
-//            print(res)
-//        }
         
-        query.get_user(id: "HycWFCyoIjVdE1uTX8aB") { (res, err) in
+        query.get_user_data(id: "HycWFCyoIjVdE1uTX8aB") { (res, err) in
             print("Got the data")
             print(err)
             print(res)
@@ -133,7 +130,8 @@ class KeyboardViewController: UIInputViewController {
         }
         let data: [String: Any] = [
             "last_use": Standard_Date(dt: Date()).string as Any,
-            "in_use": true as Any
+            "in_use": true as Any,
+            "device_id": UIDevice.current.identifierForVendor!.uuidString as Any
         ]
         query.write_user_data(id: uid, data: data) { (res, err) in
             err != nil ? print(err ?? "error posting data") : print(res ?? "success")
@@ -502,6 +500,7 @@ extension KeyboardViewController {
         let typingPattern = TypingDNARecorderMobile.getTypingPattern(2, 0, "", 0, textField)
         print("Type 2: ", typingPattern)
         textField.text = ""
+        animButton(button: sender)
         TypingDNARecorderMobile.reset(true)
     }
     

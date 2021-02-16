@@ -37,6 +37,10 @@
 		<string>com.apple.keyboard-service</string>
 		<key>NSExtensionPrincipalClass</key>
 		<string>$(PRODUCT_MODULE_NAME).KeyboardViewController</string>
+		<key>FirebaseAppDelegateProxyEnabled</key>
+		<false/>
+		<key>FirebaseAutomaticScreenReportingEnabled</key>
+		<false/>
 	</dict>
 </dict>
 </plist>
