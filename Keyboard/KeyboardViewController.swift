@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class KeyboardViewController: UIInputViewController {
     
@@ -33,20 +34,24 @@ class KeyboardViewController: UIInputViewController {
     var charSet2 = [["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"], ["-", "/", ":", ";", "(", ")", "$", "&", "@", "\""], [".", ",", "?", "!", "'"]]
     var charSet3 = [["[", "]", "{", "}", "#", "%", "^", "*", "+", "="], ["_", "\\", "|", "~", "<", ">", "€", "£", "¥", "•"], [".", ",", "?", "!", "'"]]
     
+    var query: Query!
     var showSet = "ABC"
     var capsLockOn = "on"
     var capsChangeEnabled = true
     var hold_timer: Timer?
     
     var tdna = TypingDNARecorderMobile()
-    
     var textField = UITextField()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Perform custom UI setup here
+        FirebaseApp.configure()
+         
+        query = Query()
+        
+        textField.delegate = self
         
         self.nextKeyboardButton = UIButton(type: .system)
         self.nextKeyboardButton.setTitle(NSLocalizedString("TypingDNA", comment: "Title for 'Next Keyboard' button"), for: [])
@@ -67,6 +72,21 @@ class KeyboardViewController: UIInputViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        manage_user()
+        
+        print("trying to get user data")
+//        query.get_user_data(id: "HycWFCyoIjVdE1uTX8aB") { (res, err) in
+//            print("Got the data")
+//            print(err)
+//            print(res)
+//        }
+        
+        query.get_user(id: "HycWFCyoIjVdE1uTX8aB") { (res, err) in
+            print("Got the data")
+            print(err)
+            print(res)
+        }
         
         textField.becomeFirstResponder()
         
@@ -96,10 +116,44 @@ class KeyboardViewController: UIInputViewController {
         }
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+    }
     override func updateViewConstraints() {
         super.updateViewConstraints()
         // Add custom view sizing constraints here
         
+    }
+    
+    func manage_user() {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            create_user()
+            print("no user")
+            return
+        }
+        let data: [String: Any] = [
+            "last_use": Standard_Date(dt: Date()).string as Any,
+            "in_use": true as Any
+        ]
+        query.write_user_data(id: uid, data: data) { (res, err) in
+            err != nil ? print(err ?? "error posting data") : print(res ?? "success")
+        }
+    }
+    func create_user() {
+        Auth.auth().signInAnonymously() { (authResult, error) in
+            guard let user = authResult?.user else {
+                print("could not sign in user")
+                return
+            }
+            let uid = user.uid
+            let data: [String: Any] = [
+                "last_use": Standard_Date(dt: Date()).string as Any,
+                "in_use": true as Any
+            ]
+            self.query.write_user_data(id: uid, data: data) { (res, err) in
+                err != nil ? print(err ?? "error posting data") : print(res ?? "success")
+            }
+        }
     }
     
     func layoutKeyRows() {
@@ -233,40 +287,20 @@ class KeyboardViewController: UIInputViewController {
             button.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
     }
-    
-    func checkCaps() {
-        if capsLockOn == "on" {
-            capsLockOn = "off"
-            
-            changeCaps(containerView: topRow)
-            changeCaps(containerView: topRow2)
-            changeCaps(containerView: topRow3)
-            
-            capsLocksButton.backgroundColor = UIColor(red: 0.74, green: 0.76, blue: 0.78, alpha: 1.00)
-            capsLocksButton.setImage(UIImage(systemName: "arrow.up"), for: .normal)
-        }
-    }
-    
+
     @objc func keyPressed(sender: AnyObject?) {
         let button = sender as! UIButton
         let title = button.title(for: .normal)
         (textDocumentProxy as UIKeyInput).insertText(title!)
+        textField.insertText(title!)
         checkCaps()
         animButton(button: button)
     }
-    
-    // Get type 2 pattern. Recommended on mobile, for non-sensitive fixed texts.
-    @IBAction func type2Btn(_ sender: UIButton) {
-        let typingPattern = TypingDNARecorderMobile.getTypingPattern(2, 0, "", 0, textField)
-        print("Type 2: ", typingPattern)
-    }
-
     
     @IBAction func backSpacePressed(button: UIButton) {
         (textDocumentProxy as UIKeyInput).deleteBackward()
         animButton(button: button)
     }
-    
     @objc func longPress(gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             print("Began")
@@ -284,19 +318,21 @@ class KeyboardViewController: UIInputViewController {
     @objc func executeBackSpace() {
         backSpaceBtn.isHighlighted = true
         (textDocumentProxy as UIKeyInput).deleteBackward()
+        textField.deleteBackward()
     }
-    
     @IBAction func spacePressed(button: UIButton) {
         (textDocumentProxy as UIKeyInput).insertText(" ")
+        textField.insertText(" ")
         checkCaps()
         animButton(button: button)
     }
-
     @IBAction func returnPressed(button: UIButton) {
         (textDocumentProxy as UIKeyInput).insertText("\n")
+        textField.insertText("\n")
         checkCaps()
         animButton(button: button)
     }
+    
     @IBAction func tap123(button: UIButton) {
         if showSet == "ABC" {
             showSet = "123"
@@ -376,6 +412,18 @@ class KeyboardViewController: UIInputViewController {
         
     }
     
+    func checkCaps() {
+        if capsLockOn == "on" {
+            capsLockOn = "off"
+            
+            changeCaps(containerView: topRow)
+            changeCaps(containerView: topRow2)
+            changeCaps(containerView: topRow3)
+            
+            capsLocksButton.backgroundColor = UIColor(red: 0.74, green: 0.76, blue: 0.78, alpha: 1.00)
+            capsLocksButton.setImage(UIImage(systemName: "arrow.up"), for: .normal)
+        }
+    }
     @objc func enableCaps() {
         capsChangeEnabled = true
     }
@@ -436,6 +484,60 @@ class KeyboardViewController: UIInputViewController {
             }
             containingView.addConstraints([topConstraint, bottomConstraint, rightConstraint, leftConstraint])
         }
+    }
+    
+}
+extension KeyboardViewController {
+    
+    // Get type 1 pattern. Recommended on mobile, for sensitive fixed texts (passwords/pins).
+    @IBAction func type1Btn(_ sender: UIButton) {
+        //let str = textField.text!; let typingPattern = TypingDNARecorderMobile.getTypingPattern(1, 0, str, 0);
+        let typingPattern = TypingDNARecorderMobile.getTypingPattern(1, 0, "", 0, textField)
+        print("Type 1: ", typingPattern)
+    }
+    
+    // Get type 2 pattern. Recommended on mobile, for non-sensitive fixed texts.
+    @IBAction func type2Btn(_ sender: UIButton) {
+        print("textfield text: \(textField.text ?? "No text")")
+        let typingPattern = TypingDNARecorderMobile.getTypingPattern(2, 0, "", 0, textField)
+        print("Type 2: ", typingPattern)
+        textField.text = ""
+        TypingDNARecorderMobile.reset(true)
+    }
+    
+    // Get type 0 pattern (anytext pattern). NOT recommended on mobile version because it needs 120+ chars to work well.
+    @IBAction func type0Btn(_ sender: UIButton) {
+        let typingPattern = TypingDNARecorderMobile.getTypingPattern(0, 0, "", 0)
+        print("Type 0: ",typingPattern)
+    }
+    
+    @IBAction func resetBtn(_ sender: UIButton) {
+        textField.text = ""
+//        textCountLbl.text = "0"
+        TypingDNARecorderMobile.reset(true)
+    }
+}
+
+extension KeyboardViewController: UITextFieldDelegate {
+    
+}
+
+
+
+class Standard_Date: DateFormatter {
+    
+    public var date: Date?
+    public var string: String?
+    
+    init(dt: Date) {
+        super.init()
+        date = dt
+        self.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        string = self.string(from: dt)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

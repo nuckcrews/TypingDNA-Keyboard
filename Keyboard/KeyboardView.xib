@@ -117,7 +117,6 @@
                     </state>
                     <connections>
                         <action selector="returnPressedWithButton:" destination="-1" eventType="touchUpInside" id="2la-gE-eUd"/>
-                        <action selector="type2Btn:" destination="-1" eventType="touchUpInside" id="G3A-1A-iEa"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3w-R1-n3q" customClass="KeyboardButton" customModule="Keyboard" customModuleProvider="target">
@@ -151,9 +150,9 @@
                         <constraint firstItem="8fm-0l-GBE" firstAttribute="centerX" secondItem="bNZ-0v-2tX" secondAttribute="centerX" id="guJ-Zx-Z2M"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0p-0R-vDq" customClass="KeyboardSpecialButton" customModule="Keyboard" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0p-0R-vDq" customClass="KeyboardResetButton" customModule="Keyboard" customModuleProvider="target">
                     <rect key="frame" x="49" y="190" width="40" height="42"/>
-                    <color key="backgroundColor" red="0.74117647058823533" green="0.76470588235294112" blue="0.7803921568627451" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" red="0.66274509803921566" green="0.792156862745098" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="42" id="JCb-wN-lO7"/>
                         <constraint firstAttribute="width" constant="40" id="kcd-lr-csD"/>
@@ -164,6 +163,9 @@
                         <color key="titleColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="regular"/>
                     </state>
+                    <connections>
+                        <action selector="type2Btn:" destination="-1" eventType="touchUpInside" id="aYK-aS-pvI"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
