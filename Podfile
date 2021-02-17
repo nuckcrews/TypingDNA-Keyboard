@@ -19,6 +19,7 @@ target 'DevWeek-Hackathon-1' do
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Functions'
+  pod 'MultiProgressView'
 
 #  pod 'TypingDNARecorderMobile'
 
@@ -37,6 +38,7 @@ target 'DevWeek-Hackathon-1' do
     pod 'Firebase/Firestore'
     pod 'FirebaseFirestoreSwift'
     pod 'Firebase/Functions'
+    pod 'MultiProgressView'
     
   end
 

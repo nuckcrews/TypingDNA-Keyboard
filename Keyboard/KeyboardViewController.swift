@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import MultiProgressView
 
 class KeyboardViewController: UIInputViewController {
     
@@ -19,6 +20,8 @@ class KeyboardViewController: UIInputViewController {
     @IBOutlet weak var charView1: UIView!
     @IBOutlet weak var charView2: UIView!
     @IBOutlet weak var charView3: UIView!
+    
+    @IBOutlet weak var progressView: MultiProgressView!
     
     var topRow = UIView()
     var topRow2 = UIView()
@@ -39,6 +42,7 @@ class KeyboardViewController: UIInputViewController {
     var capsLockOn = "on"
     var capsChangeEnabled = true
     var hold_timer: Timer?
+    var enrollments = 0
     
     var tdna = TypingDNARecorderMobile()
     var textField = UITextField()
@@ -46,14 +50,13 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Device ID Keyboard:", UIDevice.current.identifierForVendor!.uuidString)
-        
         // Perform custom UI setup here
         FirebaseApp.configure()
-         
+        
         query = Query()
         
         textField.delegate = self
+        textField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         
         self.nextKeyboardButton = UIButton(type: .system)
         self.nextKeyboardButton.setTitle(NSLocalizedString("TypingDNA", comment: "Title for 'Next Keyboard' button"), for: [])
@@ -63,10 +66,8 @@ class KeyboardViewController: UIInputViewController {
         self.view.addSubview(self.nextKeyboardButton)
         self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-
         
         TypingDNARecorderMobile.addTarget(textField)
-//        TypingDNARecorderMobile.addTarget(textDocumentProxy)
     }
     override func viewWillLayoutSubviews() {
         self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
@@ -75,10 +76,9 @@ class KeyboardViewController: UIInputViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        TypingDNARecorderMobile.reset()
         manage_user()
-        
-        print("trying to get user data")
-        
+
         textField.becomeFirstResponder()
         
         view.subviews.forEach({ $0.removeFromSuperview() })
@@ -92,6 +92,10 @@ class KeyboardViewController: UIInputViewController {
         longPressGesture.minimumPressDuration = 0.5 // Minimum duration to trigger the action
         backSpaceBtn.addGestureRecognizer(longPressGesture)
         
+        progressView.delegate = self
+        progressView.dataSource = self
+        
+        progressView.setProgress(section: 0, to: 0.0) //animatable
         
         layoutKeyRows()
         
@@ -129,6 +133,12 @@ class KeyboardViewController: UIInputViewController {
         ]
         query.write_user_data(id: uid, data: data) { (res, err) in
             err != nil ? print(err ?? "error posting data") : print(res ?? "success")
+            self.query.get_dna_enrollments(userID: uid) { (enr, err) in
+                if err == nil && enr != nil {
+                    self.enrollments = enr!
+                    print("Enrollments 2", self.enrollments)
+                }
+            }
         }
     }
     func create_user() {
@@ -140,10 +150,18 @@ class KeyboardViewController: UIInputViewController {
             let uid = user.uid
             let data: [String: Any] = [
                 "last_use": Standard_Date(dt: Date()).string as Any,
-                "in_use": true as Any
+                "in_use": true as Any,
+                "device_id": UIDevice.current.identifierForVendor!.uuidString as Any,
+                "enrollments": 0 as Any
             ]
             self.query.write_user_data(id: uid, data: data) { (res, err) in
                 err != nil ? print(err ?? "error posting data") : print(res ?? "success")
+                self.query.get_dna_enrollments(userID: uid) { (enr, err) in
+                    if err == nil && enr != nil {
+                        self.enrollments = enr!
+                        print("Enrollments 1", self.enrollments)
+                    }
+                }
             }
         }
     }
@@ -163,7 +181,6 @@ class KeyboardViewController: UIInputViewController {
         }
         
         let w2 = bw * charSet1[1].count
-        
         let buttons2 = createButtons(titles: charSet1[1])
         topRow2 = UIView(frame: CGRect(x: (Int(self.view.frame.width) - w2) / 2, y: 50, width: w2, height: 44))
         
@@ -182,7 +199,6 @@ class KeyboardViewController: UIInputViewController {
         self.charView1.addSubview(topRow)
         self.charView1.addSubview(topRow2)
         self.charView1.addSubview(topRow3)
-        
         
         addConstraints(buttons: buttons, containingView: topRow)
         addConstraints(buttons: buttons2, containingView: topRow2)
@@ -220,7 +236,6 @@ class KeyboardViewController: UIInputViewController {
         addConstraints(buttons: buttonsSet2, containingView: top2Row)
         addConstraints(buttons: buttons2Set2, containingView: top2Row2)
         addConstraints(buttons: buttons3Set2, containingView: top2Row3)
-        
         
         // Set 3
         let bw3 = (Int(self.view.frame.width) - 6) / charSet3[0].count
@@ -279,7 +294,7 @@ class KeyboardViewController: UIInputViewController {
             button.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
     }
-
+    
     @objc func keyPressed(sender: AnyObject?) {
         let button = sender as! UIButton
         let title = button.title(for: .normal)
@@ -291,6 +306,7 @@ class KeyboardViewController: UIInputViewController {
     
     @IBAction func backSpacePressed(button: UIButton) {
         (textDocumentProxy as UIKeyInput).deleteBackward()
+        textField.deleteBackward()
         animButton(button: button)
     }
     @objc func longPress(gesture: UILongPressGestureRecognizer) {
@@ -324,7 +340,6 @@ class KeyboardViewController: UIInputViewController {
         checkCaps()
         animButton(button: button)
     }
-    
     @IBAction func tap123(button: UIButton) {
         if showSet == "ABC" {
             showSet = "123"
@@ -401,7 +416,6 @@ class KeyboardViewController: UIInputViewController {
         animButton(button: button)
         
         Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(enableCaps), userInfo: nil, repeats: false)
-        
     }
     
     func checkCaps() {
@@ -435,9 +449,7 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func createButtons(titles: [String]) -> [UIButton] {
-        
         var buttons = [UIButton]()
-        
         for title in titles {
             let button = KeyboardButton()
             button.setTitle(title, for: .normal)
@@ -446,10 +458,8 @@ class KeyboardViewController: UIInputViewController {
             button.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
             button.setTitleColor(UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1.00), for: .normal)
             button.addTarget(self, action: #selector(keyPressed(sender:)), for: .touchUpInside)
-            
             buttons.append(button)
         }
-        
         return buttons
     }
     func addConstraints(buttons: [UIButton], containingView: UIView){
@@ -490,12 +500,7 @@ extension KeyboardViewController {
     
     // Get type 2 pattern. Recommended on mobile, for non-sensitive fixed texts.
     @IBAction func type2Btn(_ sender: UIButton) {
-        guard let uid = Auth.auth().currentUser?.uid else {
-            print("Not Logged In")
-            return
-        }
-        
-        print("textfield text: \(textField.text ?? "No text")")
+        guard let uid = Auth.auth().currentUser?.uid else { return }
         let typingPattern = TypingDNARecorderMobile.getTypingPattern(2, 0, "", 0, textField)
         
         print("Type 2: ", typingPattern)
@@ -506,8 +511,13 @@ extension KeyboardViewController {
             sender.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
         query.post_typing_pattern(id: uid, tp: typingPattern) { (res, err) in
-            print(err)
-            print(res)
+            print(err ?? "")
+            print(res ?? "")
+        }
+        enrollments += 1
+        query.post_dna_enrollments(id: uid, enrs: enrollments) { (res, err) in
+            print(err ?? "")
+            print(res ?? "")
         }
         TypingDNARecorderMobile.reset(true)
     }
@@ -520,16 +530,30 @@ extension KeyboardViewController {
     
     @IBAction func resetBtn(_ sender: UIButton) {
         textField.text = ""
-//        textCountLbl.text = "0"
         TypingDNARecorderMobile.reset(true)
     }
 }
 
 extension KeyboardViewController: UITextFieldDelegate {
-    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        let perc = Double(textField.text!.count) / Double(100)
+        progressView.setProgress(section: 0, to: Float(perc))
+    }
 }
 
-
+extension KeyboardViewController: MultiProgressViewDataSource, MultiProgressViewDelegate {
+    func numberOfSections(in progressView: MultiProgressView) -> Int {
+        return 1
+    }
+    func progressView(_ progressView: MultiProgressView, viewForSection section: Int) -> ProgressViewSection {
+        let pvs = ProgressViewSection()
+        pvs.backgroundColor = UIColor(red: 0.66, green: 0.79, blue: 1.00, alpha: 1.00)
+        pvs.titleAlignment = .right
+        pvs.titleEdgeInsets = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: 8)
+        pvs.layer.cornerRadius = 7
+        return pvs
+    }
+}
 
 class Standard_Date: DateFormatter {
     
@@ -548,3 +572,4 @@ class Standard_Date: DateFormatter {
     }
     
 }
+

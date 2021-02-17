@@ -309,7 +309,6 @@ class ShadowBoxAnyFlat: UIView {
     
 }
 
-
 class ShadowButtonAny: UIButton {
     
     private var shadowLayer: CAShapeLayer!
@@ -318,9 +317,7 @@ class ShadowButtonAny: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        
-        
+
         if fillColor == nil || self.backgroundColor != .clear {
             fillColor = self.backgroundColor!
             self.backgroundColor = .clear

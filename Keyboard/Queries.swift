@@ -22,7 +22,6 @@ class Query {
             }
         }
     }
-    
     func get_user_data(id: String, completion: @escaping (_ result: [String: Any]?, _ error: String?) -> Void) {
         functions.httpsCallable("get_user").call(["id": id]) { (res, err) in
             if let err = err {
@@ -36,14 +35,21 @@ class Query {
             }
         }
     }
-    func post_typing_pattern(id: String, tp: String, completion: @escaping (_ result: String?, _ error: String?) -> Void) {
+    func post_typing_pattern(id: String, tp: String, completion: @escaping (_ result: Any?, _ error: String?) -> Void) {
         functions.httpsCallable("post_typing_pattern").call(["id": id, "typingPattern": tp]) { (res, err) in
-            if let err = err {
-                completion(nil, err.localizedDescription)
-            } else {
-                completion("Successfully posted typing pattern", nil)
-            }
+            completion(res?.data, err?.localizedDescription)
         }
     }
+    func get_dna_enrollments(userID: String, completion: @escaping (_ result: Int?, _ error: String?) -> Void) {
+        functions.httpsCallable("get_user_enrollment").call(["id": userID]) { (res, err) in
+            completion(res?.data as? Int, err?.localizedDescription)
+        }
+    }
+    func post_dna_enrollments(id: String, enrs: Int, completion: @escaping (_ result: Any?, _ error: String?) -> Void) {
+        functions.httpsCallable("post_dna_enrollments").call(["id": id, "data": ["enrollments": enrs]]) { (res, err) in
+            completion(res?.data, err?.localizedDescription)
+        }
+    }
+    
     
 }

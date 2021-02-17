@@ -1,11 +1,9 @@
 const functions = require("firebase-functions");
 const config = require("./config.js");
-
-const admin = require("firebase-admin");
-admin.initializeApp();
-
 const https = require("https");
 const querystring = require("querystring");
+const admin = require("firebase-admin");
+admin.initializeApp();
 
 const db = admin.firestore();
 
@@ -41,7 +39,7 @@ exports.post_typing_pattern = functions.https.onCall(async (info, context) => {
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
-            "Cache-Control'": "no-cache",
+            "Cache-Control": "no-cache",
             "Authorization":
                 "Basic " + new Buffer
                 .from(config.DNA_API_KEY + ":" + config.DNA_API_SECRET)
@@ -54,10 +52,7 @@ exports.post_typing_pattern = functions.https.onCall(async (info, context) => {
             responseData += chunk;
         });
         res.on("end", function() {
-            const responseRes = JSON.parse(responseData);
-            const ref = db.collection("users").doc(info.id);
-            ref.set({enrollments: responseRes.enrollment}, {merge: true});
-            console.log(responseRes);
+            console.log(JSON.parse(responseData));
         });
     });
     req.on("error", function(e) {
@@ -71,6 +66,81 @@ exports.post_typing_pattern = functions.https.onCall(async (info, context) => {
      return "End of function";
 });
 
-exports.get_user_enrollment = functions.https.onCall(async (data, context) => {
 
+exports.delete_dna_user = functions.https.onCall(async (info, context) => {
+    const id = info.id;
+    const options = {
+        hostname: config.DNA_BASE_URL,
+        port: 443,
+        path: "/user/" + id,
+        method: "DELETE",
+        headers: {
+            "Cache-Control": "no-cache",
+            "Authorization": "Basic " +
+            new Buffer
+            .from(config.DNA_API_KEY + ":" + config.DNA_API_SECRET)
+            .toString("base64"),
+        },
+    };
+    let responseData = "";
+    const req = https.request(options, function(res) {
+        res.on("data", function(chunk) {
+            responseData += chunk;
+        });
+        res.on("end", function() {
+            console.log(JSON.parse(responseData));
+        });
+    });
+    req.on("error", function(e) {
+        console.error(e);
+    });
+    req.end();
+    return "Deleted User";
+});
+
+exports.get_user_enrollment = functions.https.onCall(async (info, context) => {
+    const id = info.id;
+    const options = {
+        hostname: config.DNA_BASE_URL,
+        port: 443,
+        path: "/user/" + id,
+        method: "GET",
+        headers: {
+            "Cache-Control": "no-cache",
+            "Authorization": "Basic " +
+            new Buffer
+            .from(config.DNA_API_KEY + ":" + config.DNA_API_SECRET)
+            .toString("base64"),
+        },
+    };
+    const r = await returnEnrollments(options);
+    return r;
+});
+
+async function returnEnrollments(options) {
+    let responseData = "";
+    let mobileCount = 0;
+    const req = https.request(options, function(res) {
+        res.on("data", function(chunk) {
+            responseData += chunk;
+        });
+        res.on("end", function() {
+            const js = JSON.parse(responseData);
+            mobileCount = js.mobilecount;
+            return mobileCount;
+        });
+    });
+    req.on("error", function(e) {
+        console.error(e);
+    });
+    req.end();
+    await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+    return mobileCount;
+}
+
+exports.post_dna_enrollments = functions.https.onCall(async (data, context) => {
+    const uid = data.id;
+    const ref = db.collection("users").doc(uid);
+    const res = await ref.set(data.data, {merge: true});
+    return res;
 });

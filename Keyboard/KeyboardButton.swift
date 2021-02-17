@@ -28,9 +28,7 @@ class KeyboardButton: UIButton {
         backgroundColor = isHighlighted ? highlightBackgroundColor : defaultBackgroundColor
     }
     
-    
 }
-
 
 // MARK: - Private Methods
 private extension KeyboardButton {
@@ -42,7 +40,6 @@ private extension KeyboardButton {
         layer.shadowOpacity = 0.35
     }
 }
-
 
 class KeyboardSpecialButton: UIButton {
     
@@ -63,7 +60,6 @@ class KeyboardSpecialButton: UIButton {
         super.layoutSubviews()
         backgroundColor = isHighlighted ? highlightBackgroundColor : defaultBackgroundColor
     }
-    
     
 }
 
@@ -97,9 +93,8 @@ class KeyboardUpperButton: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-//        backgroundColor = isHighlighted ? highlightBackgroundColor : defaultBackgroundColor
+
     }
-    
     
 }
 
@@ -133,12 +128,10 @@ class KeyboardResetButton: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-//        backgroundColor = isHighlighted ? highlightBackgroundColor : defaultBackgroundColor
+
     }
     
-    
 }
-
 
 // MARK: - Private Methods
 private extension KeyboardResetButton {
