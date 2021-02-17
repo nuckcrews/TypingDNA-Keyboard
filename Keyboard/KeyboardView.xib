@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,6 +16,7 @@
                 <outlet property="charView2" destination="MVW-Ms-K8S" id="7iX-OK-bJd"/>
                 <outlet property="charView3" destination="GTh-fn-XPK" id="NUN-qV-1Ej"/>
                 <outlet property="otherCharButton" destination="XNM-8s-EsD" id="eu8-Xs-HK9"/>
+                <outlet property="progressView" destination="QLF-rs-7il" id="8pR-ee-x0o"/>
                 <outlet property="specialCharButton" destination="Ss9-Ac-KXy" id="xTQ-1m-uY1"/>
             </connections>
         </placeholder>
@@ -24,16 +26,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTh-fn-XPK">
-                    <rect key="frame" x="0.0" y="38" width="391" height="144"/>
+                    <rect key="frame" x="0.0" y="28" width="391" height="144"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MVW-Ms-K8S">
-                    <rect key="frame" x="0.0" y="38" width="391" height="144"/>
+                    <rect key="frame" x="0.0" y="28" width="391" height="144"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9AA-ap-zNu">
-                    <rect key="frame" x="0.0" y="38" width="391" height="144"/>
+                    <rect key="frame" x="0.0" y="28" width="391" height="144"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0m-p4-VbT" customClass="KeyboardUpperButton" customModule="Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="3" y="138" width="40" height="44"/>
+                    <rect key="frame" x="3" y="128" width="40" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="mCc-x4-88H"/>
@@ -51,7 +53,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ss9-Ac-KXy" customClass="KeyboardUpperButton" customModule="Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="4" y="138" width="40" height="44"/>
+                    <rect key="frame" x="4" y="128" width="40" height="44"/>
                     <color key="backgroundColor" red="0.74117647060000003" green="0.76470588240000004" blue="0.78039215689999997" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="9Id-6W-yiX"/>
@@ -68,7 +70,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNM-8s-EsD" customClass="KeyboardSpecialButton" customModule="Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="3" y="190" width="40" height="42"/>
+                    <rect key="frame" x="3" y="180" width="40" height="42"/>
                     <color key="backgroundColor" red="0.74117647058823533" green="0.76470588235294112" blue="0.7803921568627451" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="DP4-nv-htY"/>
@@ -85,7 +87,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljU-fQ-WC5" customClass="KeyboardSpecialButton" customModule="Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="342" y="138" width="46" height="44"/>
+                    <rect key="frame" x="342" y="128" width="46" height="44"/>
                     <color key="backgroundColor" red="0.74117647058823533" green="0.76470588235294112" blue="0.7803921568627451" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
                     <gestureRecognizers/>
                     <constraints>
@@ -103,7 +105,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heH-9e-xMP" customClass="KeyboardSpecialButton" customModule="Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="296" y="190" width="92" height="42"/>
+                    <rect key="frame" x="296" y="180" width="92" height="42"/>
                     <color key="backgroundColor" red="0.74117647058823533" green="0.76470588235294112" blue="0.7803921568627451" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="92" id="FvD-3G-Ust"/>
@@ -120,7 +122,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3w-R1-n3q" customClass="KeyboardButton" customModule="Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="95" y="190" width="195" height="42"/>
+                    <rect key="frame" x="95" y="180" width="195" height="42"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <gestureRecognizers/>
                     <constraints>
@@ -137,22 +139,31 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNZ-0v-2tX">
-                    <rect key="frame" x="0.0" y="0.0" width="391" height="36"/>
+                    <rect key="frame" x="0.0" y="0.0" width="391" height="26"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fm-0l-GBE">
-                            <rect key="frame" x="140" y="5" width="111" height="30"/>
-                            <state key="normal" title="Check Statistics"/>
-                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLF-rs-7il" customClass="MultiProgressView" customModule="MultiProgressView">
+                            <rect key="frame" x="4" y="8" width="383" height="14"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" name="Primary"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="36" id="IWW-07-uFJ"/>
-                        <constraint firstItem="8fm-0l-GBE" firstAttribute="centerY" secondItem="bNZ-0v-2tX" secondAttribute="centerY" constant="2" id="Wjz-lV-oNr"/>
-                        <constraint firstItem="8fm-0l-GBE" firstAttribute="centerX" secondItem="bNZ-0v-2tX" secondAttribute="centerX" id="guJ-Zx-Z2M"/>
+                        <constraint firstAttribute="trailing" secondItem="QLF-rs-7il" secondAttribute="trailing" constant="4" id="EcT-nf-Dw0"/>
+                        <constraint firstAttribute="height" constant="26" id="IWW-07-uFJ"/>
+                        <constraint firstItem="QLF-rs-7il" firstAttribute="leading" secondItem="bNZ-0v-2tX" secondAttribute="leading" constant="4" id="eHl-Dj-5H4"/>
+                        <constraint firstAttribute="bottom" secondItem="QLF-rs-7il" secondAttribute="bottom" constant="4" id="eYd-li-AYI"/>
+                        <constraint firstItem="QLF-rs-7il" firstAttribute="top" secondItem="bNZ-0v-2tX" secondAttribute="top" constant="8" id="o3c-TJ-DY2"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0p-0R-vDq" customClass="KeyboardResetButton" customModule="Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="49" y="190" width="40" height="42"/>
-                    <color key="backgroundColor" red="0.66274509803921566" green="0.792156862745098" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <rect key="frame" x="49" y="180" width="40" height="42"/>
+                    <color key="backgroundColor" name="Primary"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="42" id="JCb-wN-lO7"/>
                         <constraint firstAttribute="width" constant="40" id="kcd-lr-csD"/>
@@ -210,5 +221,8 @@
         <image name="arrow.counterclockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.up" catalog="system" width="120" height="128"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <namedColor name="Primary">
+            <color red="0.66299998760223389" green="0.79199999570846558" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

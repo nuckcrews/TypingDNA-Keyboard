@@ -309,7 +309,6 @@ class ShadowBoxAnyFlat: UIView {
     
 }
 
-
 class ShadowButtonAny: UIButton {
     
     private var shadowLayer: CAShapeLayer!
@@ -318,9 +317,7 @@ class ShadowButtonAny: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        
-        
+
         if fillColor == nil || self.backgroundColor != .clear {
             fillColor = self.backgroundColor!
             self.backgroundColor = .clear
@@ -336,8 +333,8 @@ class ShadowButtonAny: UIButton {
             shadowLayer.shadowColor = UIColor.black.cgColor
             shadowLayer.shadowPath = shadowLayer.path
             shadowLayer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-            shadowLayer.shadowOpacity = 0.3
-            shadowLayer.shadowRadius = 5
+            shadowLayer.shadowOpacity = 0.1
+            shadowLayer.shadowRadius = 8
             
             layer.insertSublayer(shadowLayer, at: 0)
         } else {
@@ -351,8 +348,8 @@ class ShadowButtonAny: UIButton {
             shadowLayer.shadowColor = UIColor.black.cgColor
             shadowLayer.shadowPath = shadowLayer.path
             shadowLayer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-            shadowLayer.shadowOpacity = 0.3
-            shadowLayer.shadowRadius = 5
+            shadowLayer.shadowOpacity = 0.1
+            shadowLayer.shadowRadius = 8
             
             layer.insertSublayer(shadowLayer, at: 0)
         }
@@ -726,3 +723,38 @@ extension UIScrollView {
     
 }
 
+
+class KeyboardResetButton: UIButton {
+    
+    var defaultBackgroundColor: UIColor = UIColor(red: 0.74, green: 0.76, blue: 0.78, alpha: 1.00)
+    var highlightBackgroundColor: UIColor = .lightGray
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+//        backgroundColor = isHighlighted ? highlightBackgroundColor : defaultBackgroundColor
+    }
+    
+    
+}
+
+
+// MARK: - Private Methods
+private extension KeyboardResetButton {
+    func commonInit() {
+        layer.cornerRadius = 6.0
+        layer.masksToBounds = false
+        layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        layer.shadowRadius = 0.0
+        layer.shadowOpacity = 0.35
+    }
+}

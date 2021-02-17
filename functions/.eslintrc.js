@@ -1,16 +1,18 @@
 module.exports = {
-  root: true,
-  env: {
+  "root": true,
+  "env": {
     es6: true,
     node: true,
   },
-  extends: [
+  "extends": [
     "eslint:recommended",
     "google",
   ],
-  rules: {
-    quotes: ["error", "double"],
-    indent: "off",
+  "rules": {
+    "new-cap": 0,
+    "indent": "off",
+    "quotes": ["error", "double"],
+    "require-jsdoc": 0,
   },
-  parser: "babel-eslint",
+  "parser": "babel-eslint",
 };
