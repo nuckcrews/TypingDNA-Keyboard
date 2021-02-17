@@ -20,8 +20,15 @@ class LandingVC: UIViewController, UIScrollViewDelegate {
     
     let query = Query()
     
+    let txtField = UITextField()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        txtField.delegate = self
+        self.view.addSubview(txtField)
+        txtField.alpha = 0
         
         mainScroll.delegate = self
         enrollTextField.delegate = self
@@ -29,7 +36,7 @@ class LandingVC: UIViewController, UIScrollViewDelegate {
         
         self.preLogView.alpha = 0
         self.postLogView.alpha = 0
-//        self.resetView.alpha = 0
+        self.resetView.alpha = 0
         
         let device_id = UIDevice.current.identifierForVendor!.uuidString
         query.get_user_data(device_id: device_id) { (res, err) in
@@ -39,22 +46,37 @@ class LandingVC: UIViewController, UIScrollViewDelegate {
                     self.preLogView.alpha = 1
                     self.postLogView.alpha = 0
                 }
+                self.txtField.becomeFirstResponder()
             } else {
                 print(res)
                 UIView.animate(withDuration: 0.4) {
                     self.preLogView.alpha = 0
                     self.postLogView.alpha = 1
                 }
+                self.enrollTextField.becomeFirstResponder()
             }
         }
         print("Device ID:", UIDevice.current.identifierForVendor!.uuidString)
                 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+
+        
+        
+    }
     
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //
+    }
+    
+    @IBAction func tapSettings(_ sender: UIButton) {
+        sender.pulsate()
+        
+        UIApplication.shared.open(URL(string: "App-prefs:General&path=Keyboard")!)
+        
     }
 
 }

@@ -22,6 +22,10 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>NSExtension</key>
 	<dict>
+		<key>FirebaseAppDelegateProxyEnabled</key>
+		<false/>
+		<key>FirebaseAutomaticScreenReportingEnabled</key>
+		<false/>
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>IsASCIICapable</key>
@@ -37,10 +41,6 @@
 		<string>com.apple.keyboard-service</string>
 		<key>NSExtensionPrincipalClass</key>
 		<string>$(PRODUCT_MODULE_NAME).KeyboardViewController</string>
-		<key>FirebaseAppDelegateProxyEnabled</key>
-		<false/>
-		<key>FirebaseAutomaticScreenReportingEnabled</key>
-		<false/>
 	</dict>
 </dict>
 </plist>

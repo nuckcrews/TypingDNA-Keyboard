@@ -336,8 +336,8 @@ class ShadowButtonAny: UIButton {
             shadowLayer.shadowColor = UIColor.black.cgColor
             shadowLayer.shadowPath = shadowLayer.path
             shadowLayer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-            shadowLayer.shadowOpacity = 0.3
-            shadowLayer.shadowRadius = 5
+            shadowLayer.shadowOpacity = 0.1
+            shadowLayer.shadowRadius = 8
             
             layer.insertSublayer(shadowLayer, at: 0)
         } else {
@@ -351,8 +351,8 @@ class ShadowButtonAny: UIButton {
             shadowLayer.shadowColor = UIColor.black.cgColor
             shadowLayer.shadowPath = shadowLayer.path
             shadowLayer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-            shadowLayer.shadowOpacity = 0.3
-            shadowLayer.shadowRadius = 5
+            shadowLayer.shadowOpacity = 0.1
+            shadowLayer.shadowRadius = 8
             
             layer.insertSublayer(shadowLayer, at: 0)
         }

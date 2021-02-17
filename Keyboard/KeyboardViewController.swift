@@ -280,7 +280,7 @@ class KeyboardViewController: UIInputViewController {
     
     func animButton(button: UIButton) {
         UIView.animate(withDuration: 0.05, animations: {
-            button.transform = CGAffineTransform(scaleX: 1.04, y: 1.04)
+            button.transform = CGAffineTransform(scaleX: 1.06, y: 1.06)
         }, completion: {(_) -> Void in
             button.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
@@ -496,11 +496,25 @@ extension KeyboardViewController {
     
     // Get type 2 pattern. Recommended on mobile, for non-sensitive fixed texts.
     @IBAction func type2Btn(_ sender: UIButton) {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            print("Not Logged In")
+            return
+        }
+        
         print("textfield text: \(textField.text ?? "No text")")
         let typingPattern = TypingDNARecorderMobile.getTypingPattern(2, 0, "", 0, textField)
+        
         print("Type 2: ", typingPattern)
         textField.text = ""
-        animButton(button: sender)
+        UIView.animate(withDuration: 0.1, animations: {
+            sender.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }, completion: {(_) -> Void in
+            sender.transform = CGAffineTransform(scaleX: 1, y: 1)
+        })
+        query.post_typing_pattern(id: uid, tp: typingPattern) { (res, err) in
+            print(err)
+            print(res)
+        }
         TypingDNARecorderMobile.reset(true)
     }
     

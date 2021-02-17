@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,15 +14,66 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keyboard (1)" translatesAutoresizingMaskIntoConstraints="NO" id="ZQY-n8-QT2">
+                                <rect key="frame" x="44" y="164" width="326" height="280"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="280" id="aXO-1u-fFo"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gxz-Pt-sa4">
+                                <rect key="frame" x="157" y="806" width="100" height="36"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TypingDNALogo" translatesAutoresizingMaskIntoConstraints="NO" id="RTo-Hf-C9m">
+                                        <rect key="frame" x="0.0" y="10" width="100" height="26"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5J0-7m-sA2">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="BF4-2k-heC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="5J0-7m-sA2" firstAttribute="leading" secondItem="Gxz-Pt-sa4" secondAttribute="leading" id="4kR-Ar-oJF"/>
+                                    <constraint firstAttribute="height" constant="36" id="4vs-gu-7c1"/>
+                                    <constraint firstAttribute="bottom" secondItem="RTo-Hf-C9m" secondAttribute="bottom" id="80E-gc-2gq"/>
+                                    <constraint firstAttribute="trailing" secondItem="5J0-7m-sA2" secondAttribute="trailing" id="MB6-ZL-KNg"/>
+                                    <constraint firstAttribute="trailing" secondItem="RTo-Hf-C9m" secondAttribute="trailing" id="T6N-9w-5hz"/>
+                                    <constraint firstAttribute="width" constant="100" id="XIf-Vn-hXG"/>
+                                    <constraint firstItem="RTo-Hf-C9m" firstAttribute="leading" secondItem="Gxz-Pt-sa4" secondAttribute="leading" id="YeW-bT-lrI"/>
+                                    <constraint firstItem="RTo-Hf-C9m" firstAttribute="top" secondItem="5J0-7m-sA2" secondAttribute="bottom" constant="-8" id="gsb-tk-RoM"/>
+                                    <constraint firstItem="5J0-7m-sA2" firstAttribute="top" secondItem="Gxz-Pt-sa4" secondAttribute="top" id="uvF-eg-s13"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Gxz-Pt-sa4" secondAttribute="bottom" constant="20" id="1eG-Rt-zGJ"/>
+                            <constraint firstItem="ZQY-n8-QT2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="44" id="JYK-Uk-c6R"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZQY-n8-QT2" secondAttribute="trailing" constant="44" id="UV5-C6-BAG"/>
+                            <constraint firstItem="ZQY-n8-QT2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="Vcm-BQ-eSN"/>
+                            <constraint firstItem="Gxz-Pt-sa4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hll-zk-dU5"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="TypingDNALogo" width="539" height="93"/>
+        <image name="keyboard (1)" width="512" height="512"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

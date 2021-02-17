@@ -36,5 +36,14 @@ class Query {
             }
         }
     }
+    func post_typing_pattern(id: String, tp: String, completion: @escaping (_ result: String?, _ error: String?) -> Void) {
+        functions.httpsCallable("post_typing_pattern").call(["id": id, "typingPattern": tp]) { (res, err) in
+            if let err = err {
+                completion(nil, err.localizedDescription)
+            } else {
+                completion("Successfully posted typing pattern", nil)
+            }
+        }
+    }
     
 }
