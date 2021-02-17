@@ -79,12 +79,6 @@ class KeyboardViewController: UIInputViewController {
         
         print("trying to get user data")
         
-        query.get_user_data(id: "HycWFCyoIjVdE1uTX8aB") { (res, err) in
-            print("Got the data")
-            print(err)
-            print(res)
-        }
-        
         textField.becomeFirstResponder()
         
         view.subviews.forEach({ $0.removeFromSuperview() })

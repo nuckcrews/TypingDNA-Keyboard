@@ -29,17 +29,21 @@ exports.post_user = functions.https.onCall(async (data, context) => {
     return res;
 });
 
-exports.post_typing_pattern = functions.https.onCall(async (data, context) => {
+exports.post_typing_pattern = functions.https.onCall(async (info, context) => {
+    const tp = info.typingPattern;
+    const data = {
+        tp: tp,
+    };
     const options = {
         hostname: config.DNA_BASE_URL,
         port: 443,
-        path: "/auto/" + data.id,
+        path: "/auto/" + info.id,
         method: "POST",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
             "Cache-Control'": "no-cache",
-            "Authorization": "Basic " + new
-                Buffer
+            "Authorization":
+                "Basic " + new Buffer
                 .from(config.DNA_API_KEY + ":" + config.DNA_API_SECRET)
                 .toString("base64"),
         },
@@ -50,16 +54,23 @@ exports.post_typing_pattern = functions.https.onCall(async (data, context) => {
             responseData += chunk;
         });
         res.on("end", function() {
-            console.log(JSON.parse(responseData));
+            const responseRes = JSON.parse(responseData);
+            const ref = db.collection("users").doc(info.id);
+            ref.set({enrollments: responseRes.enrollment}, {merge: true});
+            console.log(responseRes);
         });
     });
     req.on("error", function(e) {
         console.error(e);
      });
      req.write(
-        querystring.stringify(data.typingPattern)
+        querystring.stringify(data)
      );
      req.end();
 
      return "End of function";
+});
+
+exports.get_user_enrollment = functions.https.onCall(async (data, context) => {
+
 });

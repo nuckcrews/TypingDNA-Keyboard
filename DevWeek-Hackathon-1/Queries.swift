@@ -26,8 +26,6 @@ class Query {
                 completion(nil, "Error getting Data")
             }
         })
-            
-            
     }
     
 }
