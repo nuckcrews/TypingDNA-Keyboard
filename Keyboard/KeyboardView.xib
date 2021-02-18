@@ -15,7 +15,9 @@
                 <outlet property="charView1" destination="9AA-ap-zNu" id="cJn-xC-gQu"/>
                 <outlet property="charView2" destination="MVW-Ms-K8S" id="7iX-OK-bJd"/>
                 <outlet property="charView3" destination="GTh-fn-XPK" id="NUN-qV-1Ej"/>
+                <outlet property="nextKeyboardButton" destination="McD-oN-3Zw" id="bpR-3t-sdS"/>
                 <outlet property="otherCharButton" destination="XNM-8s-EsD" id="eu8-Xs-HK9"/>
+                <outlet property="progressLbl" destination="Dti-FF-Ktj" id="5SG-Pc-3lV"/>
                 <outlet property="progressView" destination="QLF-rs-7il" id="8pR-ee-x0o"/>
                 <outlet property="specialCharButton" destination="Ss9-Ac-KXy" id="xTQ-1m-uY1"/>
             </connections>
@@ -86,6 +88,20 @@
                         <action selector="tap123WithButton:" destination="-1" eventType="touchUpInside" id="gVL-IZ-loW"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="McD-oN-3Zw" customClass="KeyboardSpecialButton" customModule="Keyboard" customModuleProvider="target">
+                    <rect key="frame" x="49" y="180" width="40" height="42"/>
+                    <color key="backgroundColor" red="0.74117647060000003" green="0.76470588240000004" blue="0.78039215689999997" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="5QP-fs-cdn"/>
+                        <constraint firstAttribute="height" constant="42" id="BnI-ht-rQc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="globe" catalog="system">
+                        <color key="titleColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="bold"/>
+                    </state>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljU-fQ-WC5" customClass="KeyboardSpecialButton" customModule="Keyboard" customModuleProvider="target">
                     <rect key="frame" x="342" y="128" width="46" height="44"/>
                     <color key="backgroundColor" red="0.74117647058823533" green="0.76470588235294112" blue="0.7803921568627451" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
@@ -105,10 +121,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heH-9e-xMP" customClass="KeyboardSpecialButton" customModule="Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="296" y="180" width="92" height="42"/>
+                    <rect key="frame" x="320" y="180" width="68" height="42"/>
                     <color key="backgroundColor" red="0.74117647058823533" green="0.76470588235294112" blue="0.7803921568627451" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="92" id="FvD-3G-Ust"/>
+                        <constraint firstAttribute="width" constant="68" id="FvD-3G-Ust"/>
                         <constraint firstAttribute="height" constant="42" id="riv-Dw-deq"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -122,7 +138,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3w-R1-n3q" customClass="KeyboardButton" customModule="Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="95" y="180" width="195" height="42"/>
+                    <rect key="frame" x="95" y="180" width="173" height="42"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <gestureRecognizers/>
                     <constraints>
@@ -142,7 +158,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="391" height="26"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLF-rs-7il" customClass="MultiProgressView" customModule="MultiProgressView">
-                            <rect key="frame" x="4" y="8" width="383" height="14"/>
+                            <rect key="frame" x="4" y="8" width="311" height="14"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="6"/>
@@ -152,17 +168,28 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Normal" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dti-FF-Ktj">
+                            <rect key="frame" x="319" y="4.5" width="64" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="64" id="5bP-zP-zUN"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="QLF-rs-7il" secondAttribute="trailing" constant="4" id="EcT-nf-Dw0"/>
+                        <constraint firstAttribute="trailing" secondItem="Dti-FF-Ktj" secondAttribute="trailing" constant="8" id="21h-CU-Qtm"/>
+                        <constraint firstItem="Dti-FF-Ktj" firstAttribute="leading" secondItem="QLF-rs-7il" secondAttribute="trailing" constant="4" id="Ae3-E7-Qcc"/>
                         <constraint firstAttribute="height" constant="26" id="IWW-07-uFJ"/>
                         <constraint firstItem="QLF-rs-7il" firstAttribute="leading" secondItem="bNZ-0v-2tX" secondAttribute="leading" constant="4" id="eHl-Dj-5H4"/>
                         <constraint firstAttribute="bottom" secondItem="QLF-rs-7il" secondAttribute="bottom" constant="4" id="eYd-li-AYI"/>
+                        <constraint firstItem="Dti-FF-Ktj" firstAttribute="centerY" secondItem="bNZ-0v-2tX" secondAttribute="centerY" id="fut-Ty-FLx"/>
                         <constraint firstItem="QLF-rs-7il" firstAttribute="top" secondItem="bNZ-0v-2tX" secondAttribute="top" constant="8" id="o3c-TJ-DY2"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0p-0R-vDq" customClass="KeyboardResetButton" customModule="Keyboard" customModuleProvider="target">
-                    <rect key="frame" x="49" y="180" width="40" height="42"/>
+                    <rect key="frame" x="274" y="180" width="40" height="42"/>
                     <color key="backgroundColor" name="Primary"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="42" id="JCb-wN-lO7"/>
@@ -185,13 +212,13 @@
                 <constraint firstItem="MVW-Ms-K8S" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="6xd-Fr-Wfp"/>
                 <constraint firstItem="XNM-8s-EsD" firstAttribute="top" secondItem="A0m-p4-VbT" secondAttribute="bottom" constant="8" id="7x4-ck-qpg"/>
                 <constraint firstItem="Ss9-Ac-KXy" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="4" id="8vC-9G-Qof"/>
-                <constraint firstItem="h3w-R1-n3q" firstAttribute="leading" secondItem="z0p-0R-vDq" secondAttribute="trailing" constant="6" id="Add-L3-KpF"/>
+                <constraint firstItem="McD-oN-3Zw" firstAttribute="leading" secondItem="XNM-8s-EsD" secondAttribute="trailing" constant="6" id="Agx-bd-9Ae"/>
                 <constraint firstItem="XNM-8s-EsD" firstAttribute="centerY" secondItem="z0p-0R-vDq" secondAttribute="centerY" id="Ald-WA-i1a"/>
                 <constraint firstItem="9AA-ap-zNu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Eqk-bq-FEM"/>
                 <constraint firstItem="A0m-p4-VbT" firstAttribute="top" secondItem="bNZ-0v-2tX" secondAttribute="bottom" constant="102" id="F4J-fw-Ca6"/>
                 <constraint firstItem="XNM-8s-EsD" firstAttribute="top" secondItem="MVW-Ms-K8S" secondAttribute="bottom" constant="8" id="F7g-kE-Ejh"/>
                 <constraint firstItem="Ss9-Ac-KXy" firstAttribute="centerY" secondItem="A0m-p4-VbT" secondAttribute="centerY" id="Fj1-B0-nEQ"/>
-                <constraint firstItem="z0p-0R-vDq" firstAttribute="leading" secondItem="XNM-8s-EsD" secondAttribute="trailing" constant="6" id="J8n-50-W9v"/>
+                <constraint firstItem="h3w-R1-n3q" firstAttribute="leading" secondItem="McD-oN-3Zw" secondAttribute="trailing" constant="6" id="GfM-f5-KIZ"/>
                 <constraint firstItem="9AA-ap-zNu" firstAttribute="top" secondItem="bNZ-0v-2tX" secondAttribute="bottom" constant="2" id="QiI-kO-XF3"/>
                 <constraint firstItem="GTh-fn-XPK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="SrU-5q-W4L"/>
                 <constraint firstItem="bNZ-0v-2tX" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="UEu-cQ-N39"/>
@@ -200,7 +227,6 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ljU-fQ-WC5" secondAttribute="trailing" constant="3" id="Z2J-1v-mZi"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="heH-9e-xMP" secondAttribute="trailing" constant="3" id="bT0-cj-v0F"/>
                 <constraint firstItem="XNM-8s-EsD" firstAttribute="top" secondItem="9AA-ap-zNu" secondAttribute="bottom" constant="8" id="bcZ-9x-da8"/>
-                <constraint firstItem="heH-9e-xMP" firstAttribute="leading" secondItem="h3w-R1-n3q" secondAttribute="trailing" constant="6" id="biT-2V-ZpS"/>
                 <constraint firstItem="z0p-0R-vDq" firstAttribute="centerY" secondItem="h3w-R1-n3q" secondAttribute="centerY" id="cFV-yC-GW3"/>
                 <constraint firstItem="h3w-R1-n3q" firstAttribute="centerY" secondItem="heH-9e-xMP" secondAttribute="centerY" id="dmJ-0a-uZE"/>
                 <constraint firstItem="XNM-8s-EsD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="3" id="gfQ-Wo-K8h"/>
@@ -208,8 +234,11 @@
                 <constraint firstItem="GTh-fn-XPK" firstAttribute="top" secondItem="bNZ-0v-2tX" secondAttribute="bottom" constant="2" id="nRZ-9y-Lm3"/>
                 <constraint firstItem="bNZ-0v-2tX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="oc8-Iv-0Go"/>
                 <constraint firstItem="GTh-fn-XPK" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="q9y-f1-ZjS"/>
+                <constraint firstItem="heH-9e-xMP" firstAttribute="leading" secondItem="z0p-0R-vDq" secondAttribute="trailing" constant="6" id="r5r-pl-tgb"/>
                 <constraint firstItem="ljU-fQ-WC5" firstAttribute="centerY" secondItem="A0m-p4-VbT" secondAttribute="centerY" id="rk1-pa-i7X"/>
                 <constraint firstItem="bNZ-0v-2tX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="s5h-36-Ieg"/>
+                <constraint firstItem="McD-oN-3Zw" firstAttribute="centerY" secondItem="h3w-R1-n3q" secondAttribute="centerY" id="tZm-TO-ce7"/>
+                <constraint firstItem="z0p-0R-vDq" firstAttribute="leading" secondItem="h3w-R1-n3q" secondAttribute="trailing" constant="6" id="vfr-yw-m1D"/>
                 <constraint firstItem="9AA-ap-zNu" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="xl8-9t-Jhe"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
@@ -221,6 +250,7 @@
         <image name="arrow.counterclockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.up" catalog="system" width="120" height="128"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="globe" catalog="system" width="128" height="121"/>
         <namedColor name="Primary">
             <color red="0.66299998760223389" green="0.79199999570846558" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

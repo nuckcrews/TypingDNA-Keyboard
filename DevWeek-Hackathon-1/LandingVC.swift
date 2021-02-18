@@ -19,6 +19,9 @@ class LandingVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var textCountLbl: UILabel!
     @IBOutlet weak var completedEnrollLbl: UILabel!
     
+    @IBOutlet weak var normalView: UIView!
+    @IBOutlet weak var wrongView: UIView!
+    
     let query = Query()
     var user: User?
     var user_lstnr: ListenerRegistration?
@@ -41,6 +44,9 @@ class LandingVC: UIViewController, UIScrollViewDelegate {
         
         let device_id = UIDevice.current.identifierForVendor!.uuidString
         get_user(device_id: device_id)
+        
+        normalView.layer.cornerRadius = 7
+        wrongView.layer.cornerRadius = 7
         
     }
 
@@ -73,21 +79,13 @@ class LandingVC: UIViewController, UIScrollViewDelegate {
                 self.user = res
                 self.user_lstnr = lst
                 self.completedEnrollLbl.text = "\(self.user!.enrollments ?? 0) of 3 complete"
-                if self.user!.enrollments < 3 {
-                    UIView.animate(withDuration: 0.4) {
-                        self.preLogView.alpha = 0
-                        self.postLogView.alpha = 1
-                        self.resetView.alpha = 0
-                    }
-                    self.enrollTextField.text = ""
-                    self.enrollTextField.becomeFirstResponder()
-                } else {
-                    UIView.animate(withDuration: 0.4) {
-                        self.preLogView.alpha = 0
-                        self.postLogView.alpha = 0
-                        self.resetView.alpha = 1
-                    }
+                UIView.animate(withDuration: 0.4) {
+                    self.preLogView.alpha = 0
+                    self.postLogView.alpha = 0
+                    self.resetView.alpha = 1
                 }
+                self.view.endEditing(true)
+                self.resignFirstResponder()
             }
         }
     }
@@ -100,7 +98,6 @@ class LandingVC: UIViewController, UIScrollViewDelegate {
         if user == nil { return }
         let ref = Firestore.firestore().collection("users").document(user!.id)
         ref.setData(["enrollments": 0], merge: true)
-        
         query.delete_dna_user(userID: user!.id) { (res, err) in
             print(err ?? "")
             print(res ?? "")

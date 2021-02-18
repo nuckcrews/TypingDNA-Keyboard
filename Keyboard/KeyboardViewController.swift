@@ -22,6 +22,9 @@ class KeyboardViewController: UIInputViewController {
     @IBOutlet weak var charView3: UIView!
     
     @IBOutlet weak var progressView: MultiProgressView!
+    @IBOutlet weak var progressLbl: UILabel!
+    
+    var progressSection = ProgressViewSection()
     
     var topRow = UIView()
     var topRow2 = UIView()
@@ -43,6 +46,16 @@ class KeyboardViewController: UIInputViewController {
     var capsChangeEnabled = true
     var hold_timer: Timer?
     var enrollments = 0
+    var prev_emotion: emotion = .normal
+    enum emotion {
+        case normal
+        case abnormal
+    }
+    struct emotion_color {
+        var blue = UIColor(red: 0.66, green: 0.79, blue: 1.00, alpha: 1.00)
+        var green = UIColor(red: 0.00, green: 0.57, blue: 0.58, alpha: 1.00)
+        var red = UIColor(red: 1.00, green: 0.49, blue: 0.47, alpha: 1.00)
+    }
     
     var tdna = TypingDNARecorderMobile()
     var textField = UITextField()
@@ -58,19 +71,9 @@ class KeyboardViewController: UIInputViewController {
         textField.delegate = self
         textField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         
-        self.nextKeyboardButton = UIButton(type: .system)
-        self.nextKeyboardButton.setTitle(NSLocalizedString("TypingDNA", comment: "Title for 'Next Keyboard' button"), for: [])
-        self.nextKeyboardButton.sizeToFit()
-        self.nextKeyboardButton.translatesAutoresizingMaskIntoConstraints = false
-        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
-        self.view.addSubview(self.nextKeyboardButton)
-        self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
-        TypingDNARecorderMobile.addTarget(textField)
     }
     override func viewWillLayoutSubviews() {
-        self.nextKeyboardButton.isHidden = !self.needsInputModeSwitchKey
         super.viewWillLayoutSubviews()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +81,7 @@ class KeyboardViewController: UIInputViewController {
         
         TypingDNARecorderMobile.reset()
         manage_user()
-
+        
         textField.becomeFirstResponder()
         
         view.subviews.forEach({ $0.removeFromSuperview() })
@@ -95,7 +98,16 @@ class KeyboardViewController: UIInputViewController {
         progressView.delegate = self
         progressView.dataSource = self
         
-        progressView.setProgress(section: 0, to: 0.0) //animatable
+        progressView.setProgress(section: 0, to: 100.0) //animatable
+        
+        switch prev_emotion {
+        case .normal:
+            progressSection.backgroundColor = emotion_color().blue
+        default:
+            progressSection.backgroundColor = emotion_color().red
+        }
+        
+        progressSection.layer.cornerRadius = 7
         
         layoutKeyRows()
         
@@ -109,6 +121,11 @@ class KeyboardViewController: UIInputViewController {
             capsLocksButton.backgroundColor = .white
             capsLocksButton.setImage(UIImage(systemName: "arrow.up.to.line.alt"), for: .normal)
         }
+        
+        self.nextKeyboardButton.addTarget(self, action: #selector(handleInputModeList(from:with:)), for: .allTouchEvents)
+        
+        
+        TypingDNARecorderMobile.addTarget(textField)
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -136,7 +153,7 @@ class KeyboardViewController: UIInputViewController {
             self.query.get_dna_enrollments(userID: uid) { (enr, err) in
                 if err == nil && enr != nil {
                     self.enrollments = enr!
-                    print("Enrollments 2", self.enrollments)
+                    self.progressView.setProgress(section: 0, to: 0)
                 }
             }
         }
@@ -284,7 +301,7 @@ class KeyboardViewController: UIInputViewController {
         } else {
             textColor = UIColor.black
         }
-        self.nextKeyboardButton.setTitleColor(textColor, for: [])
+        //        self.nextKeyboardButton.setTitleColor(textColor, for: [])
     }
     
     func animButton(button: UIButton) {
@@ -500,16 +517,51 @@ extension KeyboardViewController {
     
     // Get type 2 pattern. Recommended on mobile, for non-sensitive fixed texts.
     @IBAction func type2Btn(_ sender: UIButton) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let typingPattern = TypingDNARecorderMobile.getTypingPattern(2, 0, "", 0, textField)
-        
-        print("Type 2: ", typingPattern)
-        textField.text = ""
         UIView.animate(withDuration: 0.1, animations: {
             sender.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         }, completion: {(_) -> Void in
             sender.transform = CGAffineTransform(scaleX: 1, y: 1)
         })
+        enrollments < 3 ? submit_for_enrollment() : submit_typing_pattern()
+    }
+    func submit_for_enrollment() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let typingPattern = TypingDNARecorderMobile.getTypingPattern(0, 0, "", 0)
+        
+        print("Type 2: ", typingPattern)
+        textField.text = ""
+        query.post_typing_pattern(id: uid, tp: typingPattern) { (res, err) in
+            print(err ?? "")
+            print(res ?? "")
+            let r = res as? Int
+            print("Here's the result", r)
+            if r == 1 {
+                self.progressLbl.text = "Normal"
+                self.prev_emotion = .normal
+                self.progressSection.backgroundColor = emotion_color().blue
+            } else {
+                self.progressLbl.text = "Abnormal"
+                self.prev_emotion = .abnormal
+                self.progressSection.backgroundColor = emotion_color().red
+            }
+        }
+        enrollments += 1
+        query.post_dna_enrollments(id: uid, enrs: enrollments) { (res, err) in
+            print(err ?? "")
+            print(res ?? "")
+        }
+        TypingDNARecorderMobile.reset(true)
+        TypingDNARecorderMobile.addTarget(textField)
+        TypingDNARecorderMobile.start()
+    }
+    
+    func submit_typing_pattern() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        print("txtfield", textField.text)
+        let typingPattern = TypingDNARecorderMobile.getTypingPattern(0, 0, "", 0, textField)
+        
+        print("Type 2: ", typingPattern)
+        textField.text = ""
         query.post_typing_pattern(id: uid, tp: typingPattern) { (res, err) in
             print(err ?? "")
             print(res ?? "")
@@ -520,11 +572,13 @@ extension KeyboardViewController {
             print(res ?? "")
         }
         TypingDNARecorderMobile.reset(true)
+        TypingDNARecorderMobile.addTarget(textField)
+        TypingDNARecorderMobile.start()
     }
     
     // Get type 0 pattern (anytext pattern). NOT recommended on mobile version because it needs 120+ chars to work well.
     @IBAction func type0Btn(_ sender: UIButton) {
-        let typingPattern = TypingDNARecorderMobile.getTypingPattern(0, 0, "", 0)
+        let typingPattern = TypingDNARecorderMobile.getTypingPattern(0, 0, "", 0, textField)
         print("Type 0: ",typingPattern)
     }
     
@@ -536,7 +590,10 @@ extension KeyboardViewController {
 
 extension KeyboardViewController: UITextFieldDelegate {
     @objc func textFieldDidChange(_ textField: UITextField) {
-        let perc = Double(textField.text!.count) / Double(100)
+        let perc = Double(textField.text!.count) / Double(150)
+        if textField.text!.count == 150 {
+            submit_typing_pattern()
+        }
         progressView.setProgress(section: 0, to: Float(perc))
     }
 }
@@ -546,12 +603,7 @@ extension KeyboardViewController: MultiProgressViewDataSource, MultiProgressView
         return 1
     }
     func progressView(_ progressView: MultiProgressView, viewForSection section: Int) -> ProgressViewSection {
-        let pvs = ProgressViewSection()
-        pvs.backgroundColor = UIColor(red: 0.66, green: 0.79, blue: 1.00, alpha: 1.00)
-        pvs.titleAlignment = .right
-        pvs.titleEdgeInsets = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: 8)
-        pvs.layer.cornerRadius = 7
-        return pvs
+        return progressSection
     }
 }
 
@@ -572,4 +624,5 @@ class Standard_Date: DateFormatter {
     }
     
 }
+
 
