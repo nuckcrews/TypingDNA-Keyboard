@@ -1,0 +1,108 @@
+[debug] [2021-02-18T22:44:53.483Z] ----------------------------------------------------------------------
+[debug] [2021-02-18T22:44:53.484Z] Command:       /usr/local/bin/node /Users/nickcrews/.npm-global/bin/firebase --debug deploy
+[debug] [2021-02-18T22:44:53.484Z] CLI Version:   9.4.0
+[debug] [2021-02-18T22:44:53.484Z] Platform:      darwin
+[debug] [2021-02-18T22:44:53.484Z] Node Version:  v12.18.3
+[debug] [2021-02-18T22:44:53.485Z] Time:          Thu Feb 18 2021 17:44:53 GMT-0500 (Eastern Standard Time)
+[debug] [2021-02-18T22:44:53.485Z] ----------------------------------------------------------------------
+[debug] [2021-02-18T22:44:53.485Z] 
+[debug] [2021-02-18T22:44:53.491Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-02-18T22:44:53.492Z] > authorizing via signed-in user
+[debug] [2021-02-18T22:44:53.492Z] [iam] checking project devweek-hackathon-1 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2021-02-18T22:44:53.493Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-02-18T22:44:53.494Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-02-18T22:44:53.748Z] <<< HTTP RESPONSE 200 {"date":"Thu, 18 Feb 2021 22:44:53 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-18T22:44:53.776Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/devweek-hackathon-1:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2021-02-18T22:44:54.110Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 18 Feb 2021 22:44:54 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=135","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-18T22:44:54.111Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/devweek-hackathon-1/serviceAccounts/devweek-hackathon-1@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2021-02-18T22:44:54.450Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 18 Feb 2021 22:44:54 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'devweek-hackathon-1'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script. 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2021-02-18T22:44:58.330Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/devweek-hackathon-1/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2021-02-18T22:44:58.331Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/devweek-hackathon-1/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2021-02-18T22:44:58.331Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/devweek-hackathon-1/services/cloudbuild.googleapis.com  
+ 
+[debug] [2021-02-18T22:44:58.854Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 18 Feb 2021 22:44:58 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2021-02-18T22:44:59.069Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 18 Feb 2021 22:44:58 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-18T22:44:59.124Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 18 Feb 2021 22:44:58 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2021-02-18T22:44:59.124Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/devweek-hackathon-1/adminSdkConfig  
+ 
+[debug] [2021-02-18T22:44:59.414Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 18 Feb 2021 22:44:59 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  functions: preparing functions directory for uploading... 
+[debug] [2021-02-18T22:44:59.415Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/devweek-hackathon-1/configs  
+ 
+[debug] [2021-02-18T22:44:59.775Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 18 Feb 2021 22:44:59 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  functions: packaged functions (36.3 KB) for uploading 
+[debug] [2021-02-18T22:45:00.152Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "12"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^9.2.0",
+    "firebase-functions": "^3.11.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^0.2.0"
+  },
+  "private": true
+}
+[debug] [2021-02-18T22:45:00.153Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/devweek-hackathon-1/locations/-/functions  
+ 
+[debug] [2021-02-18T22:45:00.980Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 18 Feb 2021 22:45:00 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-18T22:45:00.981Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/devweek-hackathon-1/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2021-02-18T22:45:01.507Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 18 Feb 2021 22:45:01 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-18T22:45:01.508Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-c36719f7-60ed-4736-b3cb-414e503b1fc2/e596d8af-02d7-4f6f-a3b7-ca364c98337a.zip?GoogleAccessId=service-418188926152@gcf-admin-robot.iam.gserviceaccount.com&Expires=1613690101&Signature=PzeRPNlJMVOgjQJVQMjHMfLtEbiQJWSYeXH89tdOocrztxLH7nlA%2FPdzI0vsOemW1kzutWInYjVoRCerZ8pBuglW6KJVocYIglw%2FZKBLjHykmGPLM5bt%2FrWV0samttTyU4iLl%2FSC%2BZoCTEZrsLNW90G7RLwJW%2BIPY%2B62bvouwuLZ4%2BeIy3IzrnLNuSR%2Fa75RDd29b3scQytapZF6Pe8qYbj%2Biuc%2BpGK9JSejIPdQv0udBGp9TPfWg1BnstnQCgqVzoXW8hwmvdBw0h7fxft0k%2BrIcaoLi%2FUmo%2Fsiu55MsRuWaFv4aYuDZjVI1mraVcEFJ93iyLYXUAKhOVifd%2BgDyQ%3D%3D  
+ <request body omitted>
+[debug] [2021-02-18T22:45:01.767Z] <<< HTTP RESPONSE 200 {"x-guploader-uploadid":"ABg5-UwL0ssEPzwV9DJ10mDGGRArytopDS3BoW6rV0TA1qNlVDbJpvArsg5s3uizjlC5oYGzYY0FEH2E4XBe0lP7AAgW0WcmVg","etag":"\"845ea4c9cb43ee8d6ceb0fb54e388013\"","x-goog-generation":"1613688301880707","x-goog-metageneration":"1","x-goog-hash":"crc32c=ZQ4rRw==, md5=hF6kyctD7o1s6w+1TjiAEw==","x-goog-stored-content-length":"37173","x-goog-stored-content-encoding":"identity","vary":"Origin","content-length":"0","date":"Thu, 18 Feb 2021 22:45:01 GMT","server":"UploadServer","content-type":"text/html; charset=UTF-8","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""}
+[info] ✔  functions: functions folder uploaded successfully 
+[info] i  functions: updating Node.js 12 function get_user(us-central1)... 
+[debug] [2021-02-18T22:45:01.771Z] >>> HTTP REQUEST PATCH https://cloudfunctions.googleapis.com/v1/projects/devweek-hackathon-1/locations/us-central1/functions/get_user {"updateMask":"sourceUploadUrl,name,labels,runtime,environmentVariables,httpsTrigger"} 
+ {"sourceUploadUrl":"https://storage.googleapis.com/gcf-upload-us-central1-c36719f7-60ed-4736-b3cb-414e503b1fc2/e596d8af-02d7-4f6f-a3b7-ca364c98337a.zip?GoogleAccessId=service-418188926152@gcf-admin-robot.iam.gserviceaccount.com&Expires=1613690101&Signature=PzeRPNlJMVOgjQJVQMjHMfLtEbiQJWSYeXH89tdOocrztxLH7nlA%2FPdzI0vsOemW1kzutWInYjVoRCerZ8pBuglW6KJVocYIglw%2FZKBLjHykmGPLM5bt%2FrWV0samttTyU4iLl%2FSC%2BZoCTEZrsLNW90G7RLwJW%2BIPY%2B62bvouwuLZ4%2BeIy3IzrnLNuSR%2Fa75RDd29b3scQytapZF6Pe8qYbj%2Biuc%2BpGK9JSejIPdQv0udBGp9TPfWg1BnstnQCgqVzoXW8hwmvdBw0h7fxft0k%2BrIcaoLi%2FUmo%2Fsiu55MsRuWaFv4aYuDZjVI1mraVcEFJ93iyLYXUAKhOVifd%2BgDyQ%3D%3D","name":"projects/devweek-hackathon-1/locations/us-central1/functions/get_user","labels":{"deployment-tool":"cli-firebase","deployment-callable":"true"},"httpsTrigger":{},"runtime":"nodejs12","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"devweek-hackathon-1\",\"storageBucket\":\"devweek-hackathon-1.appspot.com\",\"locationId\":\"us-central\"}"}}
+[debug] [2021-02-18T22:45:02.070Z] <<< HTTP RESPONSE 400 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Thu, 18 Feb 2021 22:45:02 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-02-18T22:45:02.071Z] <<< HTTP RESPONSE BODY {"error":{"code":400,"message":"An operation on function get_user in region us-central1 in project devweek-hackathon-1 is already in progress. Please try again later.","status":"FAILED_PRECONDITION"}}
+[warn] ⚠  functions: failed to update function get_user 
+[info] HTTP Error: 400, An operation on function get_user in region us-central1 in project devweek-hackathon-1 is already in progress. Please try again later.
+[debug] [2021-02-18T22:45:02.074Z] Total Function Deployment time: 305
+[debug] [2021-02-18T22:45:02.074Z] 1 Functions Deployed
+[debug] [2021-02-18T22:45:02.074Z] 1 Functions Errored
+[debug] [2021-02-18T22:45:02.074Z] Average Function Deployment time: 303
+[info] 
+Functions deploy had errors with the following functions:
+[info] 	get_user(us-central1)
+[info] 
+To try redeploying those functions, run:
+[info]     firebase deploy --only "functions:get_user"
+[info] 
+To continue deploying other features (such as database), run:
+[info]     firebase deploy --except functions
+[debug] [2021-02-18T22:45:02.077Z] 	Error during update for projects/devweek-hackathon-1/locations/us-central1/functions/get_user: Failed to update function get_user
+[error] 
+[error] Error: Functions did not deploy properly.

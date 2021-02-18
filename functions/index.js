@@ -29,6 +29,7 @@ exports.post_user = functions.https.onCall(async (data, context) => {
 
 exports.post_typing_pattern = functions.https.onCall(async (info, context) => {
     const tp = info.typingPattern;
+    let result = 1;
     const data = {
         tp: tp,
     };
@@ -52,6 +53,8 @@ exports.post_typing_pattern = functions.https.onCall(async (info, context) => {
             responseData += chunk;
         });
         res.on("end", function() {
+            const rs = JSON.parse(responseData);
+            result = rs.result;
             console.log(JSON.parse(responseData));
         });
     });
@@ -62,8 +65,8 @@ exports.post_typing_pattern = functions.https.onCall(async (info, context) => {
         querystring.stringify(data)
      );
      req.end();
-
-     return "End of function";
+     await new Promise((resolve, reject) => setTimeout(resolve, 4000));
+     return result;
 });
 
 
